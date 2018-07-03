@@ -1,4 +1,4 @@
-package processamento;
+package processamento.classes;
 
 public class Aplicacao {
 

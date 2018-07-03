@@ -1,4 +1,6 @@
-package processamento;
+package processamento.classes;
+
+import java.util.Scanner;
 
 public class EquipamentoGenerico {
 
@@ -39,19 +41,19 @@ public class EquipamentoGenerico {
 		return quadros;
 	}
 
-	public void setMesas(Integer mesas) {
+	private void setMesas(Integer mesas) {
 		this.mesas = mesas;
 	}
 
-	public void setCadeiras(Integer cadeiras) {
+	private void setCadeiras(Integer cadeiras) {
 		this.cadeiras = cadeiras;
 	}
 
-	public void setLixeiras(Integer lixeiras) {
+	private void setLixeiras(Integer lixeiras) {
 		this.lixeiras = lixeiras;
 	}
 
-	public void setQuadros(Integer quadros) {
+	private void setQuadros(Integer quadros) {
 		this.quadros = quadros;
 	}
 
@@ -112,6 +114,33 @@ public class EquipamentoGenerico {
 	
 	//Metodos
 	
+	private Integer lerInteiro() {
+		
+		Scanner tclin = new Scanner(System.in);
+		
+		while(!tclin.hasNextInt()) {
+			System.out.print("Digite um numero inteiro: ");
+			tclin.nextInt();
+		}
+		
+		return tclin.nextInt();
+	}
+	
+	public void criarEquipamentoGenerico() {
+				
+		System.out.print("Digite a quantidade de Mesas: ");
+		setMesas(lerInteiro() );
+		
+		System.out.print("Digite a quantidade de Cadeiras: ");
+		setCadeiras(lerInteiro() );
+		
+		System.out.print("Digite a quantidade de Lixeiras: ");
+		setLixeiras(lerInteiro() );
+		
+		System.out.print("Digite a quantidade de Quadros: ");
+		setQuadros(lerInteiro() );
+		
+	}
 	
 	
 }

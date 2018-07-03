@@ -1,4 +1,6 @@
-package processamento;
+package processamento.classes;
+
+import java.util.Scanner;
 
 public class EquipamentoEletronico {
 
@@ -39,19 +41,19 @@ public class EquipamentoEletronico {
 		return sistemadesom;
 	}
 
-	public void setComputadores(Integer computadores) {
+	private void setComputadores(Integer computadores) {
 		this.computadores = computadores;
 	}
 
-	public void setArcondicionado(Integer arcondicionado) {
+	private void setArcondicionado(Integer arcondicionado) {
 		this.arcondicionado = arcondicionado;
 	}
 
-	public void setProjetores(Integer projetores) {
+	private void setProjetores(Integer projetores) {
 		this.projetores = projetores;
 	}
 
-	public void setSistemadesom(Integer sistemadesom) {
+	private void setSistemadesom(Integer sistemadesom) {
 		this.sistemadesom = sistemadesom;
 	}
 
@@ -107,7 +109,35 @@ public class EquipamentoEletronico {
 		return true;
 	}
 	
+	//metodos
 	
+	private Integer lerInteiro() {
+		
+		Scanner tclin = new Scanner(System.in);
+		
+		while(!tclin.hasNextInt()) {
+			System.out.print("Digite um numero inteiro: ");
+			tclin.nextInt();
+		}
+		
+		return tclin.nextInt();
+	}
+	
+	public void criarEquipamentoEletronico() {
+		
+		System.out.print("Digite a quantidade de Computadores: ");
+		setComputadores(lerInteiro() );
+		
+		System.out.print("Digite a quantidade de Condicionadores de Ar: ");
+		setArcondicionado(lerInteiro() );
+		
+		System.out.print("Digite a quantidade de Projetores: ");
+		setProjetores(lerInteiro() );
+		
+		System.out.print("Digite a quantidade de Componentes de som: ");
+		setSistemadesom(lerInteiro() );
+		
+	}
 
 	
 }
