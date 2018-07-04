@@ -1,7 +1,6 @@
 package processamento.classes;
 
 import java.util.Scanner;
-import processamento.colecoes.*;
 
 public class Professor {
 	
@@ -130,7 +129,7 @@ public class Professor {
 		System.out.print("Digite a formacao do professor: ");
 		setFormacao(tclin.nextLine());
 		
-		System.out.print("Indique a unidade academica do professor pelo id: ");
+		/*System.out.print("Indique a unidade academica do professor pelo id: ");*/
 		
 	}
 	

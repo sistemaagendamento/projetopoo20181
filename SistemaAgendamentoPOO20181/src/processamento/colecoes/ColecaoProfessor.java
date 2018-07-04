@@ -53,10 +53,19 @@ public class ColecaoProfessor {
 						System.err.println("Professor nao existe!");
 						throw e;	
 			}
-			
 	}
 		
-
+	public void removerProfessor(String matriculaprof) throws Exception{
+		
+		if(coleprofessor.containsKey(matriculaprof) ) { 
+			coleprofessor.remove(matriculaprof);
+			}	else{ 
+					Exception e = new Exception();
+					System.err.println("Professor nao existe!");
+					throw e;	
+		}
+}
+	
 	
  	
 	

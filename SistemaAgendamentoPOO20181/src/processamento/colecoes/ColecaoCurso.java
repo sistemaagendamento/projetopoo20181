@@ -43,6 +43,7 @@ public class ColecaoCurso {
 		
 	}
 
+	
 	public Curso pesquisarCurso(String codigotmp) throws Exception{
 		
 		if(colecurso.containsKey(codigotmp)) {
@@ -52,7 +53,20 @@ public class ColecaoCurso {
 				System.err.println("Curso nao existe!");
 				throw e;
 		}
-		
-		
 	}
-}//fim do 
+	
+	
+	public void removerCurso(String codigotmp) throws Exception{
+		
+		if(colecurso.containsKey(codigotmp)) {
+			colecurso.remove(codigotmp);
+		}	else {
+				Exception e = new Exception();
+				System.err.println("Curso nao existe!");
+				throw e;
+		}
+	}
+	
+	
+	
+}//fim da colecao curso

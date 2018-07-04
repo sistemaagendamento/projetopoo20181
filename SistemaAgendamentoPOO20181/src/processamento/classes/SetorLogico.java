@@ -109,7 +109,7 @@ public class SetorLogico {
 		System.out.print("Digite o nome da Unidade Academica: ");
 		setNome(tclin.nextLine());
 		
-		System.out.print("Digite a matricula do coordenador da Unidade Academica: ");
+		/*System.out.print("Digite a matricula do coordenador da Unidade Academica: ");*/
 		
 		
 	}

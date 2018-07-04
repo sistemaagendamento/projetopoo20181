@@ -149,7 +149,7 @@ public class HorarioAmbiente {
 		LocalTime horatmp;
 		Scanner tclin = new Scanner(System.in);	
 		
-		Integer hora; Integer minuto; Integer segundo = 0;
+		Integer hora; Integer minuto; 
 		
 		System.out.print("Digite a hora do ambiente: ");
 		hora = lerInteiro(tclin);

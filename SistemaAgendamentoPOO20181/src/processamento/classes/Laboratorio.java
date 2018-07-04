@@ -1,6 +1,5 @@
 package processamento.classes;
 
-import java.time.LocalDateTime;
 import java.util.Scanner;
 
 public class Laboratorio extends Ambiente {

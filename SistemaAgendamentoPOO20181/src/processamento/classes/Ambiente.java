@@ -164,9 +164,7 @@ public class Ambiente {
 		horariotmp.criarHorarioAmbiente();
 		setHorario(horariotmp);
 		
-		System.out.print("Digite a matricula do professor solicitador do ambiente: ");
-		
-		
+				
 		System.out.print("Digite o lugar do ambiente: ");
 		setLocalizacao(tclin.nextLine() );
 		
@@ -177,6 +175,8 @@ public class Ambiente {
 		System.out.print("Digite os componetes eletronicos do ambiente: ");
 		equipelettmp.criarEquipamentoEletronico();
 		setEquipelet(equipelettmp);
+		
+		/*System.out.print("Digite a matricula do professor solicitador do ambiente: ");*/
 		
 	}
 		

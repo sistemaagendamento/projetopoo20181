@@ -124,11 +124,10 @@ public class Curso {
 		System.out.print("Digite o nome do curso:");
 		setNome(tclin.nextLine() );
 		
-		System.out.print("Digite a matricula do coordenador do curso:");
-		
-		
 		System.out.print("Digite o horario do curso:");
 		setHorario(tclin.nextLine() );
+		
+		/*System.out.print("Digite a matricula do coordenador do curso:");*/
 		
 	}
 	

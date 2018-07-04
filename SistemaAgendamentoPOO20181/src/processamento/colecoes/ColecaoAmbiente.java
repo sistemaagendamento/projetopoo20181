@@ -47,7 +47,17 @@ public class ColecaoAmbiente {
 		}
 	}
 	
-	
+	public void removerAmbiente(HorarioAmbiente horariotemporario) throws Exception {
+		
+		if(coleambiente.containsKey(horariotemporario)) {
+			coleambiente.remove(horariotemporario);
+		}	else	{
+				Exception e = new Exception();
+				System.err.println("Ambiente nao existe!");
+				throw e;
+		}
+		
+	}
 	
 	
 }//fim da colecao ambiente

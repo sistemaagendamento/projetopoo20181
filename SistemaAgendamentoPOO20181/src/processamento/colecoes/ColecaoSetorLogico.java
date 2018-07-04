@@ -53,8 +53,20 @@ public class ColecaoSetorLogico {
 				System.err.println("Setor Logico nao existente!");
 				throw e;
 		}
-		
-		
 	}
+	
+	
+	public void removerSetorLogico(String idtmp) throws Exception {
+		
+		if(colesetlogico.containsKey(idtmp)){
+			colesetlogico.remove(idtmp);
+		}	else	{
+				Exception e = new Exception();
+				System.err.println("Setor Logico nao existente!");
+				throw e;
+		}
+	}
+	
+	
 	
 }//fim da colecao

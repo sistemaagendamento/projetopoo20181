@@ -44,6 +44,7 @@ public class ColecaoLaboratorio {
 		
 	}
 	
+	
 	public Laboratorio procurarlaboratorio(HorarioAmbiente horariotemporario) throws Exception {
 		
 		if(colelaboratorio.containsKey(horariotemporario)) {
@@ -54,5 +55,18 @@ public class ColecaoLaboratorio {
 				throw e;
 		}
 	}
+	
+	
+	
+	public void removerlaboratorio(HorarioAmbiente horariotemporario) throws Exception {
+		
+		if(colelaboratorio.containsKey(horariotemporario)) {
+			colelaboratorio.remove(horariotemporario);
+		}	else	{
+				Exception e = new Exception();
+				System.err.println("Ambiente nao existe!");
+				throw e;
+		}
+	}
 
-}
+}//fim da classe
