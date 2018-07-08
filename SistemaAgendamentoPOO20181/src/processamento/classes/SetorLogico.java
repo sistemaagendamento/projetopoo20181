@@ -16,34 +16,44 @@ public class SetorLogico {
 		super();
 	}
 
+	
+	
 	public String getId() {
 		return id;
 	}
 
+	
+	
 	public String getNome() {
 		return nome;
 	}
 
+	
 	public Professor getCoordenador() {
 		return coordenador;
 	}
+
 
 	public ArrayList<Curso> getCursos() {
 		return cursos;
 	}
 
+	
 	private void setId(String id) {
 		this.id = id;
 	}
 
+	
 	private void setNome(String nome) {
 		this.nome = nome;
 	}
 
+	
 	public void setCoordenador(Professor coordenador) {
 		this.coordenador = coordenador;
 	}
 
+	
 	public void setCursos(ArrayList<Curso> cursos) {
 		this.cursos = cursos;
 	}

@@ -25,17 +25,21 @@ public class EquipamentoGenerico {
 
 	//Getters and Setters
 	
+
 	public Integer getMesas() {
 		return mesas;
 	}
+
 
 	public Integer getCadeiras() {
 		return cadeiras;
 	}
 
+
 	public Integer getLixeiras() {
 		return lixeiras;
 	}
+
 
 	public Integer getQuadros() {
 		return quadros;

@@ -25,34 +25,43 @@ public class EquipamentoEletronico {
 	}
 
 	//Getters and Setters
+	
+
 	public Integer getComputadores() {
 		return computadores;
 	}
+	
 
 	public Integer getArcondicionado() {
 		return arcondicionado;
 	}
 
+
 	public Integer getProjetores() {
 		return projetores;
 	}
+
 
 	public Integer getSistemadesom() {
 		return sistemadesom;
 	}
 
+	
 	private void setComputadores(Integer computadores) {
 		this.computadores = computadores;
 	}
 
+	
 	private void setArcondicionado(Integer arcondicionado) {
 		this.arcondicionado = arcondicionado;
 	}
 
+	
 	private void setProjetores(Integer projetores) {
 		this.projetores = projetores;
 	}
 
+	
 	private void setSistemadesom(Integer sistemadesom) {
 		this.sistemadesom = sistemadesom;
 	}

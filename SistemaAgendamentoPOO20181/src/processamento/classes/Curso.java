@@ -13,27 +13,43 @@ public class Curso {
 	
 	//Construtores
 
+	/**
+	 * Este construtor vazio da classe Curso é utilizado para criar um objeto da classe Curso, recebendo nada como parametro.
+	 */
 	public Curso() {
 		super();
 	}
 
 	//getters and setters
 
+	/**
+	 * Metodo (getCodigo), é feito para coletar informação do artributo codigo, e retorna uma String com tal informação
+ 	 * @return codigo String - Codigo do curso
+	 */
 	public String getCodigo() {
 		return codigo;
 	}
 
-
+	/**
+	 * Metodo (getNome), é feito para coletar informação do artributo nome, e retorna uma String com tal informação.
+ 	 * @return nome String - String com o nome do curso
+	 */
 	public String getNome() {
 		return nome;
 	}
 
-
+	/**
+	 * Metodo (getCoordenador), é feito para coletar informação do artributo coordenador, e retorna um Professor com tal informação.
+ 	 * @return coordenador Professor - Retorna coordenador do curso
+	 */
 	public Professor getCoordenador() {
 		return coordenador;
 	}
 
-
+	/**
+	 * Metodo (getHorario), é feito para coletar informação do artributo horario, e retorna um String com tal informação.
+ 	 * @return horario String - Horario de funcionamento do curso
+	 */
 	public String getHorario() {
 		return horario;
 	}
@@ -113,7 +129,10 @@ public class Curso {
 		return true;
 	}
 	
-	
+	/**
+	 * Metodo (criarCurso), é feito para preencher os dados do objeto da classe Curso, não precisando colocar os dados no construtor da classe
+	 * @return void
+	 */
 	public void criarCurso() {
 		
 		Scanner tclin = new Scanner(System.in);

@@ -9,7 +9,7 @@ public class Professor {
 	private String cpf;
 	private String formacao;
 	private SetorLogico ua;
-	//nao foi implementado rg e cadeiras
+	//nao foi implementado cadeiras
 	
 	//contrutores
 	
@@ -19,33 +19,53 @@ public class Professor {
 	}
 	
 	//getters and setters
+	
+
 	public String getNome() {
 		return nome;
 	}
+	
+
 	public String getMatricula() {
 		return matricula;
 	}
+	
+
 	public String getCpf() {
 		return cpf;
 	}
+	
+
 	public String getFormacao() {
 		return formacao;
 	}
+	
+
 	public SetorLogico getUa() {
 		return ua;
 	}
+	
+	
 	private void setNome(String nome) {
 		this.nome = nome;
 	}
+	
+	
 	private void setMatricula(String matricula) {
 		this.matricula = matricula;
 	}
+	
+	
 	private void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
+	
+	
 	private void setFormacao(String formacao) {
 		this.formacao = formacao;
 	}
+	
+	
 	public void setUa(SetorLogico ua) {
 		this.ua = ua;
 	}

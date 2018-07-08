@@ -20,12 +20,19 @@ public class HorarioAmbiente {
  	
  	//metodos
 	
+ 	/**
+	 * Metodo (getX), é feito para coletar informação do artributo X,, e retorna um Y com tal informação.
+ 	 * @return Y
+	 */
 	public Integer getNumsemana() {
 		return numsemana;
 	}
 
 
-
+	/**
+	 * Metodo (getX), é feito para coletar informação do artributo X,, e retorna um Y com tal informação.
+ 	 * @return Y
+	 */
 	public String getDiasemana() {
 		return diasemana;
 	}

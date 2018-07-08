@@ -3,6 +3,12 @@ package processamento.colecoes;
 import processamento.classes.*;
 import java.util.HashMap;
 
+/**
+ * @see processamento.classes.Ambiente
+ * @see java.util.HashMap
+ * Este construtor de (ColecaoAmbiente) é utilizado para criar um HashMap que guarda objetos da classe Ambiente, recebendo nada como parametro.
+ * 
+ */ 
 public class ColecaoAmbiente {
 	
 	private HashMap<HorarioAmbiente,Ambiente> coleambiente;
@@ -12,6 +18,11 @@ public class ColecaoAmbiente {
 		this.coleambiente = new HashMap<HorarioAmbiente,Ambiente>();
 	}
 
+	/**
+	 * @see processamento.classes.Ambiente
+	 * Este metodo privado (gerarAmbiente) é utilizado para criar um objeto da classe Ambiente e retorna o mesmo.
+	 * @return Ambiente
+	 */
 	private Ambiente gerarAmbiente() {
 		
 		Ambiente ambtmp = new Ambiente();
@@ -21,6 +32,16 @@ public class ColecaoAmbiente {
 		return ambtmp;
 	}
 	
+	
+	/**
+	 * @see processamento.classes.Ambiente
+	 * Este metodo privado (adicionarAmbiente), é utilizado para adicionar um objeto da classe Ambiente, 
+	 * gerado dentro da mesma usando gerarAmbiente, e lança uma exeção caso já exista o objeto dentro da coleção.
+	 * 
+	 * @throws Exception
+	 * @return void
+	 * 
+	 */
 	public void adicionarAmbiente() throws Exception {
 		
 		Ambiente ambitmp = gerarAmbiente();
@@ -36,6 +57,18 @@ public class ColecaoAmbiente {
 		
 	}
 	
+	
+	/**
+	 * @see processamento.classes.Ambiente
+	 * Este metodo privado (procurarAmbiente), é utilizado para realizar a pesquisa de um objeto da classe Ambiente, 
+	 * dentro da coleção, se encontrado o tal objeto é retornado, senão lança uma exeção caso não exista
+	 *  o objeto dentro da coleção.
+	 * 
+	 * @param horariotemporario HorarioAmbiente - O horario o qual se deve informar para que a procura seja realizada.
+	 * @throws Exception
+	 * @return Ambiente
+	 * 
+	 */
 	public Ambiente procurarAmbiente(HorarioAmbiente horariotemporario) throws Exception {
 		
 		if(coleambiente.containsKey(horariotemporario)) {
@@ -47,6 +80,17 @@ public class ColecaoAmbiente {
 		}
 	}
 	
+	/**
+	 * @see processamento.classes.Ambiente
+	 * Este metodo privado (removerAmbiente), é utilizado para remover um objeto da classe Ambiente
+	 *  dentro da coleção, se encontrado o tal objeto é removido, senão lança uma exeção caso não exista
+	 *  o objeto dentro da coleção.
+	 * 
+	 * @param horariotemporario HorarioAmbiente - O horario o qual se deve informar para que a remoção seja realizada.
+	 * @throws Exception
+	 * @return void
+	 * 
+	 */
 	public void removerAmbiente(HorarioAmbiente horariotemporario) throws Exception {
 		
 		if(coleambiente.containsKey(horariotemporario)) {

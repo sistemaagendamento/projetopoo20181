@@ -20,15 +20,22 @@ public class Laboratorio extends Ambiente {
 	}
 	
 	
+
 	public String getEquipamentoespecifico() {
 		return equipamentoespecifico;
 	}
+	
+	
 	public Integer getQtdequipespecifico() {
 		return qtdequipespecifico;
 	}
+	
+	
 	private void setEquipamentoespecifico(String equipamentoespecifico) {
 		this.equipamentoespecifico = equipamentoespecifico;
 	}
+	
+	
 	private void setQtdequipespecifico(Integer qtdequipespecifico) {
 		this.qtdequipespecifico = qtdequipespecifico;
 	}
