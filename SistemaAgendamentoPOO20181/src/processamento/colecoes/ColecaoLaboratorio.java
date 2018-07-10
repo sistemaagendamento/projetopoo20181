@@ -54,8 +54,7 @@ public class ColecaoLaboratorio {
 		HorarioAmbiente htmp = laboratoriotmp.getHorario();
 		
 		if(colelaboratorio.containsKey(htmp)) {
-			Exception e = new Exception();
-			System.err.println("Ambiente ja existe!");
+			Exception e = new Exception("Ambiente ja existe!");
 			throw e;
 		}	else	{
 				colelaboratorio.put(htmp, laboratoriotmp);
@@ -80,8 +79,7 @@ public class ColecaoLaboratorio {
 		if(colelaboratorio.containsKey(horariotemporario)) {
 			return colelaboratorio.get(horariotemporario);
 		}	else	{
-				Exception e = new Exception();
-				System.err.println("Ambiente nao existe!");
+				Exception e = new Exception("Ambiente nao existe!");
 				throw e;
 		}
 	}
@@ -103,8 +101,7 @@ public class ColecaoLaboratorio {
 		if(colelaboratorio.containsKey(horariotemporario)) {
 			colelaboratorio.remove(horariotemporario);
 		}	else	{
-				Exception e = new Exception();
-				System.err.println("Ambiente nao existe!");
+				Exception e = new Exception("Ambiente nao existe!");
 				throw e;
 		}
 	}

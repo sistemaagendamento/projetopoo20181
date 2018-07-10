@@ -59,8 +59,7 @@ public class ColecaoCurso {
 		String chave = cursotmp.getCodigo();
 		
 		if(colecurso.containsKey(chave) ) {
-			Exception e = new Exception();
-			System.err.println("Curso ja existe!");
+			Exception e = new Exception("Curso ja existe!");
 			throw e;
 		}	else {
 			colecurso.put(chave, cursotmp);
@@ -84,8 +83,7 @@ public class ColecaoCurso {
 		if(colecurso.containsKey(codigotmp)) {
 			return colecurso.get(codigotmp);
 		}	else {
-				Exception e = new Exception();
-				System.err.println("Curso nao existe!");
+				Exception e = new Exception("Curso nao existe!");
 				throw e;
 		}
 	}
@@ -106,8 +104,7 @@ public class ColecaoCurso {
 		if(colecurso.containsKey(codigotmp)) {
 			colecurso.remove(codigotmp);
 		}	else {
-				Exception e = new Exception();
-				System.err.println("Curso nao existe!");
+				Exception e = new Exception("Curso nao existe!");
 				throw e;
 		}
 	}

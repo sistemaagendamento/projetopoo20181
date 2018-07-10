@@ -48,8 +48,7 @@ public class ColecaoAmbiente {
 		HorarioAmbiente htmp = ambitmp.getHorario();
 		
 		if(coleambiente.containsKey(htmp)) {
-			Exception e = new Exception();
-			System.err.println("Ambiente ja existe!");
+			Exception e = new Exception("Ambiente ja existe!");
 			throw e;
 		}	else	{
 				coleambiente.put(htmp, ambitmp);
@@ -74,8 +73,7 @@ public class ColecaoAmbiente {
 		if(coleambiente.containsKey(horariotemporario)) {
 			return coleambiente.get(horariotemporario);
 		}	else	{
-				Exception e = new Exception();
-				System.err.println("Ambiente nao existe!");
+				Exception e = new Exception("Ambiente nao existe!");
 				throw e;
 		}
 	}

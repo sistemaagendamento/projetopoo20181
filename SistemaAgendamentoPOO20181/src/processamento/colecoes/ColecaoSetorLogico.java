@@ -53,8 +53,7 @@ public class ColecaoSetorLogico {
 		String chave = uatmp.getId();
 		
 		if(colesetlogico.containsKey(chave)) {
-			Exception e = new Exception();
-			System.err.println("Setor Logico ja existente!");
+			Exception e = new Exception("Setor Logico ja existente!");
 			throw e;
 		}	else{
 				colesetlogico.put(chave, uatmp);
@@ -79,8 +78,7 @@ public class ColecaoSetorLogico {
 		if(colesetlogico.containsKey(idtmp)){
 			return colesetlogico.get(idtmp);
 		}	else	{
-				Exception e = new Exception();
-				System.err.println("Setor Logico nao existente!");
+				Exception e = new Exception("Setor Logico ja existente!");
 				throw e;
 		}
 	}
@@ -101,8 +99,7 @@ public class ColecaoSetorLogico {
 		if(colesetlogico.containsKey(idtmp)){
 			colesetlogico.remove(idtmp);
 		}	else	{
-				Exception e = new Exception();
-				System.err.println("Setor Logico nao existente!");
+				Exception e = new Exception("Setor Logico ja existente!");
 				throw e;
 		}
 	}
