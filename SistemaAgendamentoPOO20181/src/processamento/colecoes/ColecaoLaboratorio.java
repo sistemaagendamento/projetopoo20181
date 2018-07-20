@@ -1,12 +1,19 @@
 package processamento.colecoes;
 
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.util.HashMap;
+import java.io.File;
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.StaxDriver;
 
 import processamento.classes.*;
 
 public class ColecaoLaboratorio {
 	
 	private HashMap<HorarioAmbiente,Laboratorio> colelaboratorio;
+	private File laboratorio_xml;
 
 	/**
 	 * @see processamento.classes.Laboratorio
@@ -17,6 +24,7 @@ public class ColecaoLaboratorio {
 	public ColecaoLaboratorio() {
 		super();
 		this.colelaboratorio = new HashMap<HorarioAmbiente,Laboratorio>();
+		this.laboratorio_xml = new File("Lista-de-Laboratorios.xml");
 	}
 
 	@Override
@@ -106,4 +114,66 @@ public class ColecaoLaboratorio {
 		}
 	}
 
+	
+	 /**
+	 * @see processamento.classes.Laboratorio
+	 * Este metodo publico (salvarEmXml), é utilizado para serializar a Colecao, que guarda objetos da classe Laboratorio
+	 *  e guarda esta serialização em um arquivo xml, senão lança uma exeção.
+	 *  o objeto dentro da coleção.
+	 * 
+	 * @throws Exception
+	 * @return void
+	 * 
+	 */
+   public void salvarEmXml() throws Exception {
+	   
+	   XStream sai_xml =  new XStream(new StaxDriver());
+       FileOutputStream salvar_dados;
+       
+       sai_xml.alias("Laboratorio", Laboratorio.class);
+       sai_xml.alias("Listagem de laboatorios",ColecaoLaboratorio.class);
+       
+       
+       try {
+           
+    	   salvar_dados = new FileOutputStream(this.laboratorio_xml);
+    	   salvar_dados.write(sai_xml.toXML(this.colelaboratorio).getBytes());
+    	   salvar_dados.close();
+           
+       } catch (Exception erro) {
+    	   erro.printStackTrace();
+       }
+   }
+   
+   /**
+  	 * @see processamento.classes.Laboratorio
+  	 * Este metodo publico (lerDoXml), é utilizado para deserializar a Colecao, que lê objetos da classe Laboratorio,
+  	 *  serializados em um arquivo xml, senão lança uma exeção.
+  	 * @throws Exception
+  	 * @return void
+  	 * 
+  	 */
+   public void lerDoXml() throws Exception {
+	   XStream recebe_xml =  new XStream(new StaxDriver());
+       BufferedInputStream ler_dados;
+       
+       recebe_xml.alias("Laboratorio", Laboratorio.class);
+       recebe_xml.alias("Listagem de laboatorios",ColecaoLaboratorio.class);
+       
+       
+       if(laboratorio_xml.exists()) {
+    	   try {
+
+    		   ler_dados = new BufferedInputStream( new FileInputStream(this.laboratorio_xml) );
+    	   
+    		   this.colelaboratorio = (HashMap<HorarioAmbiente, Laboratorio>) recebe_xml.fromXML(ler_dados);
+    		    	   
+    		   ler_dados.close();
+           
+    	   } catch (Exception erro) {
+    		   erro.printStackTrace();
+    	   }
+       }
+   }
+	
 }//fim da classe

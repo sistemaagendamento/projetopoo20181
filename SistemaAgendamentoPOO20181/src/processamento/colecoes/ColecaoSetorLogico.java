@@ -1,11 +1,20 @@
 package processamento.colecoes;
 
 import processamento.classes.*;
+
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.util.HashMap;
+
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.StaxDriver;
 
 public class ColecaoSetorLogico {
 
 	private HashMap<String,SetorLogico> colesetlogico;
+	private File slogico_xml;
 
 	/**
 	 * @see processamento.classes.SetorLogico
@@ -16,6 +25,7 @@ public class ColecaoSetorLogico {
 	public ColecaoSetorLogico() {
 		super();
 		this.colesetlogico = new HashMap<String,SetorLogico>();
+		this.slogico_xml = new File("Lista-de-Unidades-Academicas.xml");
 	}
 
 
@@ -103,6 +113,68 @@ public class ColecaoSetorLogico {
 				throw e;
 		}
 	}
+	
+	
+	  /**
+			 * @see processamento.classes.SetorLogico
+			 * Este metodo publico (salvarEmXml), é utilizado para serializar a Colecao, que guarda objetos da classe SetorLogico
+			 *  e guarda esta serialização em um arquivo xml, senão lança uma exeção.
+			 *  o objeto dentro da coleção.
+			 * 
+			 * @throws Exception
+			 * @return void
+			 * 
+			 */
+		   public void salvarEmXml() throws Exception {
+			   
+			   XStream sai_xml =  new XStream(new StaxDriver());
+		       FileOutputStream salvar_dados;
+		       
+		       sai_xml.alias("Unidade_Academica", SetorLogico.class);
+		       sai_xml.alias("Listagem de unidades academicas",ColecaoSetorLogico.class);
+		       
+		       
+		       try {
+		           
+		    	   salvar_dados = new FileOutputStream(this.slogico_xml);
+		    	   salvar_dados.write(sai_xml.toXML(this.colesetlogico).getBytes());
+		    	   salvar_dados.close();
+		           
+		       } catch (Exception erro) {
+		    	   erro.printStackTrace();
+		       }
+		   }
+		   
+		   /**
+		  	 * @see processamento.classes.SetorLogico
+		  	 * Este metodo publico (lerDoXml), é utilizado para deserializar a Colecao, que lê objetos da classe SetorLogico,
+		  	 *  serializados em um arquivo xml, senão lança uma exeção.
+		  	 * @throws Exception
+		  	 * @return void
+		  	 * 
+		  	 */
+		   public void lerDoXml() throws Exception {
+			   XStream recebe_xml =  new XStream(new StaxDriver());
+		       BufferedInputStream ler_dados;
+		       
+		       recebe_xml.alias("Unidade_Academica", SetorLogico.class);
+		       recebe_xml.alias("Listagem de unidades academicas",ColecaoSetorLogico.class);
+		       
+		       
+		       if(slogico_xml.exists()) {
+		       		try {
+		           
+		       			ler_dados = new BufferedInputStream( new FileInputStream(this.slogico_xml) );
+		    	   
+		       			this.colesetlogico = (HashMap<String,SetorLogico>) recebe_xml.fromXML(ler_dados);
+		    		    	   
+		       			ler_dados.close();
+		           
+		       		} catch (Exception erro) {
+		       			erro.printStackTrace();
+		       		}
+		   		}
+		   }
 	
 	
 	

@@ -1,7 +1,14 @@
 package processamento.colecoes;
 
 import processamento.classes.*;
+
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.util.HashMap;
+import java.io.File;
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.StaxDriver;
 
 /**
  * @see processamento.classes.Ambiente
@@ -12,10 +19,12 @@ import java.util.HashMap;
 public class ColecaoAmbiente {
 	
 	private HashMap<HorarioAmbiente,Ambiente> coleambiente;
+	private File ambiente_xml;
 
 	public ColecaoAmbiente() {
 		super();
 		this.coleambiente = new HashMap<HorarioAmbiente,Ambiente>();
+		this.ambiente_xml = new File("Listagem-de-ambientes.xml");
 	}
 
 	/**
@@ -99,6 +108,67 @@ public class ColecaoAmbiente {
 		}
 		
 	}
+	
+	
+	 /**
+		 * @see processamento.classes.Ambiente
+		 * Este metodo publico (salvarEmXml), é utilizado para serializar a Colecao, que guarda objetos da classe Ambiente
+		 *  e guarda esta serialização em um arquivo xml, senão lança uma exeção.
+		 *  o objeto dentro da coleção.
+		 * 
+		 * @throws Exception
+		 * @return void
+		 * 
+		 */
+	   public void salvarEmXml() throws Exception {
+		   
+		   XStream sai_xml =  new XStream(new StaxDriver());
+	       FileOutputStream salvar_dados;
+	       
+	       sai_xml.alias("Ambiente", Ambiente.class);
+	       sai_xml.alias("Listagem de ambientes",ColecaoAmbiente.class);
+	       
+	       
+	       try {
+	           
+	    	   salvar_dados = new FileOutputStream(this.ambiente_xml);
+	    	   salvar_dados.write(sai_xml.toXML(this.coleambiente).getBytes());
+	    	   salvar_dados.close();
+	           
+	       } catch (Exception erro) {
+	    	   erro.printStackTrace();
+	       }
+	   }
+	   
+	   /**
+	  	 * @see processamento.classes.Laboratorio
+	  	 * Este metodo publico (lerDoXml), é utilizado para deserializar a Colecao, que lê objetos da classe Laboratorio,
+	  	 *  serializados em um arquivo xml, senão lança uma exeção.
+	  	 * @throws Exception
+	  	 * @return void
+	  	 * 
+	  	 */
+	   public void lerDoXml() throws Exception {
+		   XStream recebe_xml =  new XStream(new StaxDriver());
+	       BufferedInputStream ler_dados;
+	       
+	       recebe_xml.alias("Ambiente", Ambiente.class);
+	       recebe_xml.alias("Listagem de ambientes",ColecaoAmbiente.class);
+	       
+	       
+	       if(ambiente_xml.exists()) {
+	    	   try {
+	           
+	    		   ler_dados = new BufferedInputStream( new FileInputStream(this.ambiente_xml) );
+	    	   
+	    		   this.coleambiente = (HashMap<HorarioAmbiente, Ambiente>) recebe_xml.fromXML(ler_dados);
+	    		   ler_dados.close();
+	           
+	       		} catch (Exception erro) {
+	    	   		erro.printStackTrace();
+	       		}
+	       }
+	   }
 	
 	
 }//fim da colecao ambiente

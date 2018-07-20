@@ -1,13 +1,21 @@
 package processamento.colecoes;
 
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import processamento.classes.*;
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.StaxDriver;
 
 
 public class ColecaoProfessor {
 
 	private HashMap<String,Professor> coleprofessor;
-
+	private File professor_xml;
 	/**
 	 * @see processamento.classes.Professor
 	 * @see java.util.HashMap
@@ -17,6 +25,7 @@ public class ColecaoProfessor {
 	public ColecaoProfessor() {
 		super();
 		this.coleprofessor = new HashMap<String,Professor>();
+		this.professor_xml = new File("Lista-de-professores.xml");
 	}
 
 	@Override
@@ -103,9 +112,68 @@ public class ColecaoProfessor {
 					Exception e = new Exception("Professor nao existe!");
 					throw e;	
 		}
-}
+	}
 	
-	
+	   /**
+		 * @see processamento.classes.Professor
+		 * Este metodo publico (salvarEmXml), é utilizado para serializar a Colecao, que guarda objetos da classe Professor
+		 *  e guarda esta serialização em um arquivo xml, senão lança uma exeção.
+		 *  o objeto dentro da coleção.
+		 * 
+		 * @throws Exception
+		 * @return void
+		 * 
+		 */
+	   public void salvarEmXml() throws Exception {
+		   
+		   XStream sai_xml =  new XStream(new StaxDriver());
+	       FileOutputStream salvar_dados;
+	       
+	       sai_xml.alias("Professor", Professor.class);
+	       sai_xml.alias("Listagem de professores",ColecaoProfessor.class);
+	       
+	       
+	       try {
+	           
+	    	   salvar_dados = new FileOutputStream(this.professor_xml);
+	    	   salvar_dados.write(sai_xml.toXML(coleprofessor).getBytes());
+	    	   salvar_dados.close();
+	           
+	       } catch (Exception erro) {
+	    	   erro.printStackTrace();
+	       }
+	   }
+	   
+	   /**
+	  	 * @see processamento.classes.Professor
+	  	 * Este metodo publico (lerDoXml), é utilizado para deserializar a Colecao, que lê objetos da classe Professor,
+	  	 *  serializados em um arquivo xml, senão lança uma exeção.
+	  	 * @throws Exception
+	  	 * @return void
+	  	 * 
+	  	 */
+	   public void lerDoXml() throws Exception {
+		   XStream recebe_xml =  new XStream(new StaxDriver());
+	       BufferedInputStream ler_dados;
+	       
+	       recebe_xml.alias("Professor", Professor.class);
+	       recebe_xml.alias("Listagem de professores",ColecaoProfessor.class);
+	       
+	       
+	       if(professor_xml.exists()) {
+	       		try {
+	           
+	       			ler_dados = new BufferedInputStream( new FileInputStream(this.professor_xml) );
+	    	   
+	       			this.coleprofessor = (HashMap<String,Professor>) recebe_xml.fromXML(ler_dados);
+	    		    	   
+	       			ler_dados.close();
+	           
+	       		} catch (Exception erro) {
+	       			erro.printStackTrace();
+	       		}
+	       }	
+	   }
  	
 	
 }//fim da classe ColecaoProfessor

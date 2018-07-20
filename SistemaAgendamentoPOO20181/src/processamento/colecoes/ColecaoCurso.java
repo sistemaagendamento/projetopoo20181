@@ -1,12 +1,20 @@
 package processamento.colecoes;
 
 import processamento.classes.*;
+
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.util.HashMap;
+import java.io.File;
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.StaxDriver;
 
 
 public class ColecaoCurso {
 
 	private HashMap<String,Curso> colecurso;
+	private File curso_xml;
 
 	/**
 	 * @see processamento.classes.Curso
@@ -17,6 +25,7 @@ public class ColecaoCurso {
 	public ColecaoCurso() {
 		super();
 		this.colecurso = new HashMap<String, Curso>();
+		this.curso_xml = new File("Listagem-de-Cursos");
 	}
 
 	/**
@@ -110,5 +119,65 @@ public class ColecaoCurso {
 	}
 	
 	
+	 /**
+		 * @see processamento.classes.Curso
+		 * Este metodo publico (salvarEmXml), é utilizado para serializar a Colecao, que guarda objetos da classe Curso
+		 *  e guarda esta serialização em um arquivo xml, senão lança uma exeção.
+		 *  o objeto dentro da coleção.
+		 * 
+		 * @throws Exception
+		 * @return void
+		 * 
+		 */
+	   public void salvarEmXml() throws Exception {
+		   
+		   XStream sai_xml =  new XStream(new StaxDriver());
+	       FileOutputStream salvar_dados;
+	       
+	       sai_xml.alias("Curso", Curso.class);
+	       sai_xml.alias("Listagem de cursos",ColecaoCurso.class);
+	       
+	       
+	       try {
+	           
+	    	   salvar_dados = new FileOutputStream(this.curso_xml);
+	    	   salvar_dados.write(sai_xml.toXML(this.colecurso).getBytes());
+	    	   salvar_dados.close();
+	           
+	       } catch (Exception erro) {
+	    	   erro.printStackTrace();
+	       }
+	   }
+	   
+	   /**
+	  	 * @see processamento.classes.Curso
+	  	 * Este metodo publico (lerDoXml), é utilizado para deserializar a Colecao, que lê objetos da classe Curso,
+	  	 *  serializados em um arquivo xml, senão lança uma exeção.
+	  	 * @throws Exception
+	  	 * @return void
+	  	 * 
+	  	 */
+	   public void lerDoXml() throws Exception {
+		   XStream recebe_xml =  new XStream(new StaxDriver());
+	       BufferedInputStream ler_dados;
+	       
+	       recebe_xml.alias("Curso", Curso.class);
+	       recebe_xml.alias("Listagem de cursos",ColecaoCurso.class);
+	       
+	       
+	       if(curso_xml.exists()) {
+	    	   try {
+	           
+	    	   ler_dados = new BufferedInputStream( new FileInputStream(this.curso_xml) );
+	    	   //ler_dados.write(saixml.toXML(colec_pc).getBytes());
+	    	   this.colecurso = (HashMap<String, Curso>) recebe_xml.fromXML(ler_dados);
+	    		    	   
+	    	   ler_dados.close();
+	           
+	       		} catch (Exception erro) {
+	       			erro.printStackTrace();
+	       		}
+	       }
+	   }
 	
 }//fim da colecao curso
