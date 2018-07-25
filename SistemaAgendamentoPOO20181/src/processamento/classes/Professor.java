@@ -132,7 +132,10 @@ public class Professor {
 	
 	//metodos
 	
-	
+	/**
+	 * Metodo (criarProfessor), é feito para preencher os dados do objeto da classe Professor, não precisando colocar os dados no construtor da classe
+	 * @return void
+	 */
 	public void criarProfessor(){
 	
 		Scanner tclin = new Scanner(System.in);
@@ -149,7 +152,7 @@ public class Professor {
 		System.out.print("Digite a formacao do professor: ");
 		setFormacao(tclin.nextLine());
 		
-		/*System.out.print("Indique a unidade academica do professor pelo id: ");*/
+		System.out.print("Indique a unidade academica do professor pelo id: ");
 		
 	}
 	

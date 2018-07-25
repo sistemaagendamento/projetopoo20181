@@ -75,6 +75,11 @@ public class Laboratorio extends Ambiente {
 		return true;
 	}
 
+	
+	/**
+	 * Metodo (criarLaboratorio), é feito para preencher os dados do objeto da classe Laboratorio, não precisando colocar os dados no construtor da classe
+	 * @return void
+	 */
 	public void criarLaboratorio() {
 		
 		Scanner tclin = new Scanner(System.in);
@@ -87,7 +92,12 @@ public class Laboratorio extends Ambiente {
 		
 	}
 	
-private int lerInteiro(Scanner tclin) {
+	
+	/**
+	 * Metodo privado (lerInteiro), é feito para garantir a leitura de um inteiro e retorna um Integer com tal informação.
+ 	 * @return tclin.nextInt Integer
+	 */
+	private int lerInteiro(Scanner tclin) {
 		
 		while (!tclin.hasNextInt()) {
 			System.out.print("");

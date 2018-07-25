@@ -34,7 +34,7 @@ public class SetorLogico {
 	}
 
 
-	public ArrayList<Curso> getCursos() {
+	private ArrayList<Curso> getCursos() {
 		return cursos;
 	}
 
@@ -54,7 +54,7 @@ public class SetorLogico {
 	}
 
 	
-	public void setCursos(ArrayList<Curso> cursos) {
+	private void setCursos(ArrayList<Curso> cursos) {
 		this.cursos = cursos;
 	}
 
@@ -108,6 +108,10 @@ public class SetorLogico {
 
 //metodos
 	
+	/**
+	 * Metodo (criarUnidadeAcademica), é feito para preencher os dados do objeto da classe SetorLogico, não precisando colocar os dados no construtor da classe
+	 * @return void
+	 */
 	public void criarUnidadeAcademica(){
 		cursos = new ArrayList<Curso>();
 		
@@ -119,11 +123,17 @@ public class SetorLogico {
 		System.out.print("Digite o nome da Unidade Academica: ");
 		setNome(tclin.nextLine());
 		
-		/*System.out.print("Digite a matricula do coordenador da Unidade Academica: ");*/
+		System.out.print("Digite a matricula do coordenador da Unidade Academica: ");
 		
 		
 	}
 	
-
+	/**
+	 * Metodo (criarUnidadeAcademica), é feito para preencher os dados do objeto da classe SetorLogico, não precisando colocar os dados no construtor da classe
+	 * @return void
+	 */
+	public void adcionarCurso(Curso cursotmp){
+		cursos.add(cursotmp);
+	}
 	
 }

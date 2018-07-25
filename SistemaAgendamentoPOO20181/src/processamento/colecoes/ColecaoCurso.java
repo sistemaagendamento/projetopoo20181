@@ -25,7 +25,7 @@ public class ColecaoCurso {
 	public ColecaoCurso() {
 		super();
 		this.colecurso = new HashMap<String, Curso>();
-		this.curso_xml = new File("Listagem-de-Cursos");
+		this.curso_xml = new File("Listagem-de-Cursos.xml");
 	}
 
 	/**
@@ -62,9 +62,9 @@ public class ColecaoCurso {
 	 * @return void
 	 * 
 	 */
-	public void adicionarCurso() throws Exception {
+	public void adicionarCurso(Curso cursotmp) throws Exception {
 		
-		Curso cursotmp = gerarCurso();
+		//Curso cursotmp = gerarCurso();
 		String chave = cursotmp.getCodigo();
 		
 		if(colecurso.containsKey(chave) ) {

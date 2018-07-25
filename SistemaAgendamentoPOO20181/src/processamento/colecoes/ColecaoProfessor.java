@@ -58,8 +58,8 @@ public class ColecaoProfessor {
 	 * @return void
 	 * 
 	 */
- 	public void adicionarProfessor() throws Exception{
-		Professor prof = gerarProfessor();
+ 	public void adicionarProfessor(Professor prof) throws Exception{
+		//Professor prof = gerarProfessor();
 		String matprofessor = prof.getMatricula();
 		
 		

@@ -57,9 +57,9 @@ public class ColecaoSetorLogico {
 	 * @return void
 	 * 
 	 */
-	public void adicionarSetorLogico() throws Exception {
+	public void adicionarSetorLogico(SetorLogico uatmp) throws Exception {
 		
-		SetorLogico uatmp = gerarSetorLogico();
+		//SetorLogico uatmp = gerarSetorLogico();
 		String chave = uatmp.getId();
 		
 		if(colesetlogico.containsKey(chave)) {

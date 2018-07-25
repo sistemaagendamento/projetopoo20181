@@ -51,9 +51,10 @@ public class ColecaoAmbiente {
 	 * @return void
 	 * 
 	 */
-	public void adicionarAmbiente() throws Exception {
+	public void adicionarAmbiente(Ambiente ambitmp) throws Exception {
 		
-		Ambiente ambitmp = gerarAmbiente();
+		//Ambiente ambitmp = gerarAmbiente();
+		
 		HorarioAmbiente htmp = ambitmp.getHorario();
 		
 		if(coleambiente.containsKey(htmp)) {

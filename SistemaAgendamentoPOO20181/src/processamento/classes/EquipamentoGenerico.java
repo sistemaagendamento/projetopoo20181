@@ -118,6 +118,10 @@ public class EquipamentoGenerico {
 	
 	//Metodos
 	
+	/**
+	 * Metodo privado (lerInteiro), é feito para garantir a leitura de um inteiro e retorna um Integer com tal informação.
+ 	 * @return tclin.nextInt Integer
+	 */
 	private Integer lerInteiro() {
 		
 		Scanner tclin = new Scanner(System.in);
@@ -130,6 +134,10 @@ public class EquipamentoGenerico {
 		return tclin.nextInt();
 	}
 	
+	/**
+	 * Metodo (criarEquipamentoGenerico), é feito para preencher os dados do objeto da classe EquipamentoGenerico, não precisando colocar os dados no construtor da classe
+	 * @return void
+	 */
 	public void criarEquipamentoGenerico() {
 				
 		System.out.print("Digite a quantidade de Mesas: ");

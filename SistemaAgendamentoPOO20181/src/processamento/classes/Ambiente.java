@@ -243,7 +243,7 @@ public class Ambiente {
 		equipelettmp.criarEquipamentoEletronico();
 		setEquipelet(equipelettmp);
 		
-		/*System.out.print("Digite a matricula do professor solicitador do ambiente: ");*/
+		System.out.print("Digite a matricula do professor solicitador do ambiente: ");
 		
 	}
 		

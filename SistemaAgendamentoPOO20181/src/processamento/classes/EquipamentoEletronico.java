@@ -120,6 +120,10 @@ public class EquipamentoEletronico {
 	
 	//metodos
 	
+	/**
+	 * Metodo privado (lerInteiro), é feito para garantir a leitura de um inteiro e retorna um Integer com tal informação.
+ 	 * @return tclin.nextInt Integer
+	 */
 	private Integer lerInteiro() {
 		
 		Scanner tclin = new Scanner(System.in);
@@ -132,6 +136,11 @@ public class EquipamentoEletronico {
 		return tclin.nextInt();
 	}
 	
+	
+	/**
+	 * Metodo (criarEquipamentoEletronico), é feito para preencher os dados do objeto da classe EquipamentoEletronico, não precisando colocar os dados no construtor da classe
+	 * @return void
+	 */
 	public void criarEquipamentoEletronico() {
 		
 		System.out.print("Digite a quantidade de Computadores: ");

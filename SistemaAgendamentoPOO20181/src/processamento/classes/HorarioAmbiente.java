@@ -21,8 +21,8 @@ public class HorarioAmbiente {
  	//metodos
 	
  	/**
-	 * Metodo (getX), é feito para coletar informação do artributo X,, e retorna um Y com tal informação.
- 	 * @return Y
+	 * Metodo (getNumsemana), é feito para coletar informação do artributo numsemana, e retorna um Integer com tal informação.
+ 	 * @return numsemana Integer
 	 */
 	public Integer getNumsemana() {
 		return numsemana;
@@ -30,8 +30,8 @@ public class HorarioAmbiente {
 
 
 	/**
-	 * Metodo (getX), é feito para coletar informação do artributo X,, e retorna um Y com tal informação.
- 	 * @return Y
+	 * Metodo (getDiasemana), é feito para coletar informação do artributo diasemana, e retorna um String com tal informação.
+ 	 * @return diasemana String
 	 */
 	public String getDiasemana() {
 		return diasemana;
@@ -132,7 +132,10 @@ public class HorarioAmbiente {
 	}
 
 
-
+	/**
+	 * Metodo (criarHorarioAmbiente), é feito para preencher os dados do objeto da classe HorarioAmbiente, não precisando colocar os dados no construtor da classe
+	 * @return void
+	 */
 	public void criarHorarioAmbiente() {
 		
 		Scanner tclin = new Scanner(System.in);
@@ -151,6 +154,11 @@ public class HorarioAmbiente {
 		
 	}
 	
+	
+	/**
+	 * Metodo (novoTempo), é feito para preencher atributos do tipo LocalTime da classe HorarioAmbiente, não precisando colocar os dados no construtor da classe
+	 * @return void
+	 */
 	private LocalTime novoTempo() {
 		
 		LocalTime horatmp;
@@ -170,7 +178,10 @@ public class HorarioAmbiente {
 	}
 	
 	
-	
+	/**
+	 * Metodo privado (lerInteiro), é feito para garantir a leitura de um inteiro e retorna um Integer com tal informação.
+ 	 * @return inteiro Integer
+	 */
 	private int lerInteiro(Scanner tclin) {
 		
 		while (!tclin.hasNextInt()) {
