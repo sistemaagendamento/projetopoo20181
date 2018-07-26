@@ -26,4 +26,31 @@
       <sistemadesom>1</sistemadesom>
     </equipelet>
   </Ambiente>
+  <Ambiente>
+    <nome>Quadra</nome>
+    <horario>
+      <diasemana>17:30</diasemana>
+      <horainicio>19:30</horainicio>
+      <horatermino></horatermino>
+    </horario>
+    <solicitador>
+      <nome>Fulano</nome>
+      <matricula>20181</matricula>
+      <cpf>11111111111</cpf>
+      <formacao>Bacharelado</formacao>
+    </solicitador>
+    <localizacao>Regiao Desportiva</localizacao>
+    <equipgen>
+      <mesas>0</mesas>
+      <cadeiras>0</cadeiras>
+      <lixeiras>0</lixeiras>
+      <quadros>0</quadros>
+    </equipgen>
+    <equipelet>
+      <computadores>0</computadores>
+      <arcondicionado>0</arcondicionado>
+      <projetores>0</projetores>
+      <sistemadesom>0</sistemadesom>
+    </equipelet>
+  </Ambiente>
 </list>

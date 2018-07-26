@@ -353,14 +353,18 @@ public class Aplicacao {
 				
 				case 3:
 					HorarioAmbiente horario_de_pesquisa = new HorarioAmbiente();
+					System.out.print("Digite o nome do ambiente a ser pesquisado: ");
+					String nomeambi = leString();
 					horario_de_pesquisa.criarHorarioAmbiente();
-					cole_ambiente.procurarAmbiente(horario_de_pesquisa);
+					cole_ambiente.procurarAmbiente(horario_de_pesquisa, nomeambi);
 					break;
 				
 				case 4:
 					HorarioAmbiente horario_pesquisa = new HorarioAmbiente();
+					System.out.print("Digite o nome do ambiente a ser pesquisado: ");
+					String nomeambiente = leString();
 					horario_pesquisa.criarHorarioAmbiente();
-					cole_ambiente.removerAmbiente(horario_pesquisa);
+					cole_ambiente.removerAmbiente(horario_pesquisa, nomeambiente);
 					break;
 					
 				case 5:
@@ -489,12 +493,12 @@ public class Aplicacao {
 				switch(opmenu) {
 		
 				case 1:
-					Laboratorio lab_tmp = new Laboratorio();
-					lab_tmp.criarAmbiente();
-					lab_tmp.criarLaboratorio();
+					Laboratorio labtmp = new Laboratorio();
+					labtmp.criarAmbiente();
+					labtmp.criarLaboratorio();
 					System.out.print("Digite a matricula do professor solicitador do laboratorio: ");
-					lab_tmp.setSolicitador(cole_professor.pesquisarProfessor(leString() ));
-					cole_laboratorio.adicionarLaboratorio(lab_tmp);
+					labtmp.setSolicitador(cole_professor.pesquisarProfessor(leString() ));
+					cole_laboratorio.adicionarLaboratorio(labtmp);
 					break;
 				
 				case 2:
@@ -503,14 +507,18 @@ public class Aplicacao {
 					
 				case 3:
 					HorarioAmbiente horario_de_pesquisa = new HorarioAmbiente();
+					System.out.print("Digite o nome do ambiente a ser procurado: ");
+					String nomeambiente = leString();
 					horario_de_pesquisa.criarHorarioAmbiente();
-					cole_laboratorio.procurarlaboratorio(horario_de_pesquisa);
+					cole_laboratorio.procurarlaboratorio(horario_de_pesquisa, nomeambiente);
 					break;
 				
 				case 4:
 					HorarioAmbiente horario_pesquisa = new HorarioAmbiente();
+					System.out.print("Digite o nome do ambiente a ser removido: ");
+					String nomeambi = leString();
 					horario_pesquisa.criarHorarioAmbiente();
-					cole_laboratorio.removerlaboratorio(horario_pesquisa);
+					cole_laboratorio.removerlaboratorio(horario_pesquisa, nomeambi);
 					break;
 					
 				case 5:

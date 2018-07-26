@@ -68,16 +68,23 @@ public class ColecaoLaboratorio {
 	 */
 	public void adicionarLaboratorio(Laboratorio laboratoriotmp) throws Exception {
 	
-		for(Laboratorio labtmp : colelaboratorio) {
-			if(laboratoriotmp.getHorario().equals(labtmp.getHorario())) {
+		Boolean check = false;
+		
+		for(Laboratorio labitmpe : colelaboratorio) {
+		
+			if(laboratoriotmp.getHorario().equals(labitmpe.getHorario()) && laboratoriotmp.getNome().equals(labitmpe.getNome())) {
 				Exception e = new Exception("Laboratorio ja existe!");
 				throw e;				
 			}	else	{
+				check = true;
 				
-				colelaboratorio.add(laboratoriotmp);
 			}
 		
-		}		
+		}
+		
+		if(check) {
+			colelaboratorio.add(laboratoriotmp);
+		}
 	}
 	
 	/**
@@ -87,15 +94,16 @@ public class ColecaoLaboratorio {
 	 *  o objeto dentro da coleção.
 	 * 
 	 * @param horariotemporario HorarioAmbiente - O horario o qual se deve informar para que a procura seja realizada.
+	 * @param nomelaboratoriotmp String - O nome do laboratorio o qual se deve informar para que a procura seja realizada.
 	 * @throws Exception
 	 * @return Laboratorio
 	 * 
 	 */
-	public Laboratorio procurarlaboratorio(HorarioAmbiente horariotemporario) throws Exception {
+	public Laboratorio procurarlaboratorio(HorarioAmbiente horariotemporario, String nomelaboratoriotmp) throws Exception {
 	
 		for(Laboratorio labtmp : colelaboratorio) {
 			
-			if(labtmp.getHorario().equals(horariotemporario)) {
+			if(labtmp.getHorario().equals(horariotemporario) && labtmp.getNome().equals(nomelaboratoriotmp) ) {
 				return labtmp;				
 			}	else	{
 				Exception e = new Exception("Ambiente nao existe!");
@@ -114,15 +122,16 @@ public class ColecaoLaboratorio {
 	 *  o objeto dentro da coleção.
 	 * 
 	 * @param horariotemporario HorarioAmbiente - O horario o qual se deve informar para que a procura seja realizada.
+	 * @param nomelaboratoriotmp String - O nome do laboratorio o qual se deve informar para que a procura seja realizada.
 	 * @throws Exception
 	 * @return void
 	 * 
 	 */
-	public void removerlaboratorio(HorarioAmbiente horariotemporario) throws Exception {
+	public void removerlaboratorio(HorarioAmbiente horariotemporario, String nomelaboratoriotmp) throws Exception {
 				
 		for(Laboratorio labtmp : colelaboratorio) {
 			
-			if(labtmp.getHorario().equals(horariotemporario)) {
+			if(labtmp.getHorario().equals(horariotemporario) && labtmp.getNome().equals(nomelaboratoriotmp) ) {
 				colelaboratorio.remove(labtmp);				
 			}	else	{
 				Exception e = new Exception("Ambiente nao existe!");
@@ -137,15 +146,15 @@ public class ColecaoLaboratorio {
 	 * @see processamento.classes.Ambiente
 	 * Este metodo publico (verColecaoAmbiente), é utilizado para ver a coleção Ambiente inteira
 	 * 
-
 	 * @return void
 	 * 
 	 */
 	public void verColecaoLaboratorio() throws Exception {
 		
 		
-		for(Laboratorio labtmp : colelaboratorio) {
-			System.out.println(labtmp);
+		for(int i=0; i<this.colelaboratorio.size();i++) {
+			Laboratorio labitmpe =  colelaboratorio.get(i);
+			System.out.println(labitmpe);
 		}		
 		
 	}

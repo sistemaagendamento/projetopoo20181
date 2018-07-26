@@ -69,19 +69,24 @@ public class ColecaoAmbiente {
 		
 		//Ambiente ambitmp = gerarAmbiente();
 		
+		Boolean check = false;
 		
 		for(Ambiente ambtmp : coleambiente) {
-			if(ambientetmp.getHorario().equals(ambtmp.getHorario())) {
+			if(ambientetmp.getHorario().equals(ambtmp.getHorario()) && ambientetmp.getNome().equals(ambtmp.getNome())) {
 				Exception e = new Exception("Ambiente ja existe!");	
 				throw e;
 			}	else	{
 				
-				coleambiente.add(ambientetmp);
-				
+				check = true;
 			}
 		
 		}
 	
+		if(check) {
+			coleambiente.add(ambientetmp);
+		}
+		
+		
 	}
 	
 	
@@ -92,15 +97,16 @@ public class ColecaoAmbiente {
 	 *  o objeto dentro da coleção.
 	 * 
 	 * @param horariotemporario HorarioAmbiente - O horario o qual se deve informar para que a procura seja realizada.
+	 * @param nomeambientetmp String - O nome do ambiente o qual se deve informar para que a procura seja realizada.
 	 * @throws Exception
 	 * @return Ambiente
 	 * 
 	 */
-	public Ambiente procurarAmbiente(HorarioAmbiente horariotemporario) throws Exception {
+	public Ambiente procurarAmbiente(HorarioAmbiente horariotemporario, String nomeambientetmp) throws Exception {
 		
 		for(Ambiente ambtmp : coleambiente) {
 			
-			if(ambtmp.getHorario().equals(horariotemporario)) {
+			if(ambtmp.getHorario().equals(horariotemporario) && ambtmp.getNome().equals(nomeambientetmp)) {
 				return ambtmp;				
 			}	else	{
 				Exception e = new Exception("Ambiente nao existe!");
@@ -119,16 +125,17 @@ public class ColecaoAmbiente {
 	 *  o objeto dentro da coleção.
 	 * 
 	 * @param horariotemporario HorarioAmbiente - O horario o qual se deve informar para que a remoção seja realizada.
+	 * @param nomeambientetmp String - O nome do ambiente o qual se deve informar para que a procura seja realizada.
 	 * @throws Exception
 	 * @return void
 	 * 
 	 */
-	public void removerAmbiente(HorarioAmbiente horariotemporario) throws Exception {
+	public void removerAmbiente(HorarioAmbiente horariotemporario, String nomeambientetmp) throws Exception {
 		
 		
 		for(Ambiente ambtmp : coleambiente) {
 			
-			if(ambtmp.getHorario().equals(horariotemporario)) {
+			if(ambtmp.getHorario().equals(horariotemporario) && ambtmp.getNome().equals(nomeambientetmp)) {
 				coleambiente.remove(ambtmp);				
 			}	else	{
 				Exception e = new Exception("Ambiente nao existe!");
