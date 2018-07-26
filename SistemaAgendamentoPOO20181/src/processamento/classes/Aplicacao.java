@@ -15,7 +15,8 @@ public class Aplicacao {
 		ColecaoProfessor cole_professor = new ColecaoProfessor();
 		ColecaoSetorLogico cole_set_logico = new ColecaoSetorLogico();
 		
-		abrirArquivos( cole_ambiente,  cole_curso,  cole_laboratorio, cole_professor, cole_set_logico);
+		abrirArquivosHash( cole_curso, cole_professor, cole_set_logico);
+		abrirArquivosArray(cole_ambiente,cole_laboratorio);
 		
 		try {
 			menuPrincipal( cole_ambiente,  cole_curso,  cole_laboratorio, cole_professor, cole_set_logico);
@@ -24,32 +25,28 @@ public class Aplicacao {
 			e.printStackTrace();
 		}		
 		
-		salvarNosArquivos( cole_ambiente,  cole_curso,  cole_laboratorio, cole_professor, cole_set_logico);
+		salvarNosArquivosHash(   cole_curso, cole_professor, cole_set_logico);
+		salvarNosArquivosArray(cole_ambiente,cole_laboratorio);
 		
 	}//fim do metodo main
 
 	/**
-	 * @see processamento.colecoes.ColecaoAmbiente
 	 * @see processamento.colecoes.ColecaoCurso
-	 * @see processamento.colecoes.ColecaoLaboratorio
 	 * @see processamento.colecoes.ColecaoProfessor
 	 * @see processamento.colecoes.ColecaoSetorLogico
  	 * 
- 	 * Este metodo estatico (abrirArquivos), é utilizado para abrir os arquivos das coleções
+ 	 * Este metodo estatico (abrirArquivosHash), é utilizado para abrir os arquivos das coleções
  	 *   
- 	 * @param cole_ambiente ColecaoAmbiente - Coleção que guarda objetos do tipo Ambiente.
  	 * @param cole_curso ColecaoCurso - Coleção que guarda objetos do tipo Curso.
- 	 * @param cole_laboratorio ColecaoLaboratorio - Coleção que guarda objetos do tipo Laboratorio.
  	 * @param cole_professor ColecaoProfessor - Coleção que guarda objetos do tipo Professor.
  	 * @param cole_set_logico ColecaoSetorLogico - Coleção que guarda objetos do tipo SetorLogico.
  	 * 
  	 * @return void
  	 */
-	private static void abrirArquivos(ColecaoAmbiente cole_ambiente, ColecaoCurso cole_curso, ColecaoLaboratorio cole_laboratorio, ColecaoProfessor cole_professor, ColecaoSetorLogico cole_set_logico) {
+	private static void abrirArquivosHash (ColecaoCurso cole_curso, ColecaoProfessor cole_professor, ColecaoSetorLogico cole_set_logico) {
 		try {
-			cole_ambiente.lerDoXml();
-			cole_curso.lerDoXml();
-			cole_laboratorio.lerDoXml();
+			
+			cole_curso.lerDoXml();			
 			cole_professor.lerDoXml();
 			cole_set_logico.lerDoXml();
 		} catch (Exception e) {
@@ -59,18 +56,38 @@ public class Aplicacao {
 		
 	}
 	
-	
-	
-	
-	
 	/**
 	 * @see processamento.colecoes.ColecaoAmbiente
+	 * @see processamento.colecoes.ColecaoLaboratorio
+ 	 * 
+ 	 * Este metodo estatico (abrirArquivosArray), é utilizado para abrir os arquivos das coleções
+ 	 *   
+ 	 * @param cole_ambiente ColecaoAmbiente - Coleção que guarda objetos do tipo Ambiente.
+ 	 * @param cole_laboratorio ColecaoLaboratorio - Coleção que guarda objetos do tipo Laboratorio.
+ 	 * 
+ 	 * @return void
+ 	 */
+	private static void abrirArquivosArray(ColecaoAmbiente cole_ambiente, ColecaoLaboratorio cole_laboratorio) {
+		try {
+			
+			cole_ambiente.lerDoXml();
+			cole_laboratorio.lerDoXml();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
+
+	/**
 	 * @see processamento.colecoes.ColecaoCurso
 	 * @see processamento.colecoes.ColecaoLaboratorio
 	 * @see processamento.colecoes.ColecaoProfessor
 	 * @see processamento.colecoes.ColecaoSetorLogico
  	 * 
- 	 * Este metodo estatico (salvarNosArquivos), é utilizado para salvar os dados nos arquivos das coleções
+ 	 * Este metodo estatico (salvarNosArquivosHash), é utilizado para salvar os dados nos arquivos das coleções
  	 *   
  	 * @param cole_ambiente ColecaoAmbiente - Coleção que guarda objetos do tipo Ambiente.
  	 * @param cole_curso ColecaoCurso - Coleção que guarda objetos do tipo Curso.
@@ -80,11 +97,10 @@ public class Aplicacao {
  	 * 
  	 * @return void
  	 */
-	private static void salvarNosArquivos(ColecaoAmbiente cole_ambiente, ColecaoCurso cole_curso, ColecaoLaboratorio cole_laboratorio, ColecaoProfessor cole_professor, ColecaoSetorLogico cole_set_logico) {
+	private static void salvarNosArquivosHash(ColecaoCurso cole_curso, ColecaoProfessor cole_professor, ColecaoSetorLogico cole_set_logico) {
 		try {
-			cole_ambiente.salvarEmXml();
-			cole_curso.salvarEmXml();
-			cole_laboratorio.salvarEmXml();
+			
+			cole_curso.salvarEmXml();			
 			cole_professor.salvarEmXml();
 			cole_set_logico.salvarEmXml();
 		} catch (Exception e) {
@@ -93,6 +109,29 @@ public class Aplicacao {
 		}
 	}
 	
+
+	/**
+	 * @see processamento.colecoes.ColecaoAmbiente
+	 * @see processamento.colecoes.ColecaoLaboratorio
+ 	 * 
+ 	 * Este metodo estatico (salvarNosArquivosArray), é utilizado para salvar os dados nos arquivos das coleções
+ 	 *   
+ 	 * @param cole_ambiente ColecaoAmbiente - Coleção que guarda objetos do tipo Ambiente.
+ 	 * @param cole_laboratorio ColecaoLaboratorio - Coleção que guarda objetos do tipo Laboratorio.
+ 	 * 
+ 	 * @return void
+ 	 */
+	private static void salvarNosArquivosArray(ColecaoAmbiente cole_ambiente, ColecaoLaboratorio cole_laboratorio) {
+		try {
+			
+			cole_ambiente.salvarEmXml();
+			cole_laboratorio.salvarEmXml();
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 	/**
 	 * Metodo estático (leInteiro), é feito para garantir a leitura de um inteiro e retorna um Integer com tal informação.
@@ -227,7 +266,7 @@ public class Aplicacao {
 				System.out.println("=================================================================");
 				System.out.println("Digite [5] para entrar no submenu da colecao de Setores Logicos:");
 				System.out.println("=================================================================");
-				System.out.println("Digite [0] para sair:");
+				System.out.println("Digite [0] para voltar:");
 				System.out.println("=================================================================");
 		
 				opmenu=leInteiro();
@@ -243,7 +282,7 @@ public class Aplicacao {
 						break;
 
 					case 3:
-						submenuLaboratorio(cole_laboratorio);
+						submenuLaboratorio(cole_laboratorio, cole_professor);
 						break;
 
 					case 4:
@@ -301,6 +340,7 @@ public class Aplicacao {
 				case 1:
 					Ambiente ambitmp = new Ambiente();
 					ambitmp.criarAmbiente();
+					System.out.print("Digite a matricula do professor solicitador do ambiente: ");
 					ambitmp.setSolicitador(cole_professor.pesquisarProfessor(leString() ));
 					cole_ambiente.adicionarAmbiente(ambitmp);
 					break;
@@ -414,7 +454,7 @@ public class Aplicacao {
 	 * Este metodo estatico (submenuLaboratorio), é utilizado gerir tudo que for relacionado a modificação da Coleção de Laboratorios.
 	 * @param cole_curso ColecaoLaboratorio - Coleção que guarda objetos do tipo Laboratorio.
 	 */
-	private static void submenuLaboratorio(ColecaoLaboratorio cole_laboratorio) throws Exception {
+	private static void submenuLaboratorio(ColecaoLaboratorio cole_laboratorio, ColecaoProfessor cole_professor) throws Exception {
 		
 		Integer opmenu = 0;
 		
@@ -441,7 +481,12 @@ public class Aplicacao {
 				switch(opmenu) {
 		
 				case 1:
-					cole_laboratorio.adicionarLaboratorio();
+					Laboratorio lab_tmp = new Laboratorio();
+					lab_tmp.criarAmbiente();
+					lab_tmp.criarLaboratorio();
+					System.out.print("Digite a matricula do professor solicitador do laboratorio: ");
+					lab_tmp.setSolicitador(cole_professor.pesquisarProfessor(leString() ));
+					cole_laboratorio.adicionarLaboratorio(lab_tmp);
 					break;
 				
 				case 2:
@@ -570,15 +615,15 @@ public class Aplicacao {
 				System.out.println("====================================================");
 				System.out.println("Digite [1] para adicionar um novo setor logico: ");
 				System.out.println("====================================================");
-				System.out.println("Digite [1] para adicionar um novo curso na UA: ");
+				System.out.println("Digite [2] para adicionar um novo curso na UA: ");
 				System.out.println("====================================================");
-				System.out.println("Digite [2] para pesquisar um novo setor logico pelo id: ");
+				System.out.println("Digite [3] para pesquisar um novo setor logico pelo id: ");
 				System.out.println("====================================================");
-				System.out.println("Digite [3] para remover um novo setor logico pelo id: ");
+				System.out.println("Digite [4] para remover um novo setor logico pelo id: ");
 				System.out.println("====================================================");
-				System.out.println("Digite [4] para salvar os dados da ram no arquivo:");
+				System.out.println("Digite [5] para salvar os dados da ram no arquivo:");
 				System.out.println("====================================================");
-				System.out.println("Digite [5] para ler os dados do arquivo:");
+				System.out.println("Digite [6] para ler os dados do arquivo:");
 				System.out.println("====================================================");
 				System.out.println("Digite [0] para voltar:");
 				System.out.println("====================================================");
@@ -595,7 +640,9 @@ public class Aplicacao {
 					break;
 				
 				case 2:
+					System.out.print("Digite o codigo do Curso: ");
 					Curso ctmp = cole_curso.pesquisarCurso(leString() );
+					System.out.print("Digite a id do SetorLogico: ");
 					String uaid_de_pesq = leString();
 					cole_set_logico.pesquisarSetorLogico(uaid_de_pesq).adcionarCurso(ctmp);
 					break;

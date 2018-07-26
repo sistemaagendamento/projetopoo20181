@@ -8,10 +8,10 @@ import java.util.Scanner;
 
 public class HorarioAmbiente {
 	
-	
+	private Integer numsemana;
  	private String diasemana;
- 	private String horainicio;
- 	private String horatermino;
+ 	private LocalTime horainicio;
+ 	private LocalTime horatermino;
 	
  	public HorarioAmbiente() {
 		super();
@@ -21,7 +21,14 @@ public class HorarioAmbiente {
  	
  	//metodos
 	
- 
+ 	/**
+	 * Metodo (getNumsemana), é feito para coletar informação do artributo numsemana, e retorna um Integer com tal informação.
+ 	 * @return numsemana Integer
+	 */
+	public Integer getNumsemana() {
+		return numsemana;
+	}
+
 
 	/**
 	 * Metodo (getDiasemana), é feito para coletar informação do artributo diasemana, e retorna um String com tal informação.
@@ -33,15 +40,23 @@ public class HorarioAmbiente {
 
 
 
-	public String getHorainicio() {
+	public LocalTime getHorainicio() {
 		return horainicio;
 	}
 
 
 
-	public String getHoratermino() {
+	public LocalTime getHoratermino() {
 		return horatermino;
 	}
+
+	
+
+
+	private void setNumsemana(Integer numsemana) {
+		this.numsemana = numsemana;
+	}
+
 
 
 	private void setDiasemana(String diasemana) {
@@ -50,13 +65,13 @@ public class HorarioAmbiente {
 
 
 
-	private void setHorainicio(String horainicio) {
+	private void setHorainicio(LocalTime horainicio) {
 		this.horainicio = horainicio;
 	}
 
 
 
-	private void setHoratermino(String horatermino) {
+	private void setHoratermino(LocalTime horatermino) {
 		this.horatermino = horatermino;
 	}
 
@@ -65,7 +80,7 @@ public class HorarioAmbiente {
 
 	@Override
 	public String toString() {
-		return "HorarioAmbiente [diasemana=" + diasemana + ", horainicio=" + horainicio
+		return "HorarioAmbiente [numsemana=" + numsemana + ", diasemana=" + diasemana + ", horainicio=" + horainicio
 				+ ", horatermino=" + horatermino + "]";
 	}
 
@@ -79,6 +94,7 @@ public class HorarioAmbiente {
 		result = prime * result + ((diasemana == null) ? 0 : diasemana.hashCode());
 		result = prime * result + ((horainicio == null) ? 0 : horainicio.hashCode());
 		result = prime * result + ((horatermino == null) ? 0 : horatermino.hashCode());
+		result = prime * result + ((numsemana == null) ? 0 : numsemana.hashCode());
 		return result;
 	}
 
@@ -108,6 +124,11 @@ public class HorarioAmbiente {
 				return false;
 		} else if (!horatermino.equals(other.horatermino))
 			return false;
+		if (numsemana == null) {
+			if (other.numsemana != null)
+				return false;
+		} else if (!numsemana.equals(other.numsemana))
+			return false;
 		return true;
 	}
 
@@ -120,7 +141,8 @@ public class HorarioAmbiente {
 		
 		Scanner tclin = new Scanner(System.in);
 		
-		
+		System.out.println("Digite o numero da semana que o ambiente sera alocado");
+		setNumsemana(lerInteiro(tclin) );
 		
 		System.out.println("Digite o dia da semana que o ambiente sera alocado");
 		setDiasemana(tclin.nextLine());
@@ -131,7 +153,6 @@ public class HorarioAmbiente {
 		System.out.println("Digite a hora final do ambiente alocado");
 		setHoratermino(novoTempo() );
 		
-		
 	}
 	
 	
@@ -139,14 +160,14 @@ public class HorarioAmbiente {
 	 * Metodo (novoTempo), é feito para preencher atributos do tipo LocalTime da classe HorarioAmbiente, não precisando colocar os dados no construtor da classe
 	 * @return void
 	 */
-	private String novoTempo() {
+	private LocalTime novoTempo() {
 		
-		String horatmp;
+		LocalTime horatmp;
 		Scanner tclin = new Scanner(System.in);	
 		
-		Integer hora; Integer minuto;
+		Integer hora; Integer minuto; Integer segundo; 
 		
-		/*System.out.print("Digite a hora do ambiente: ");
+		System.out.print("Digite a hora do ambiente: ");
 		hora = lerInteiro(tclin);
 		
 		System.out.print("Digite o minuto do ambiente: ");
@@ -156,10 +177,10 @@ public class HorarioAmbiente {
 		segundo = lerInteiro(tclin);*/
 		
 		//horatmp = LocalTime.parse(hora + ":" + minuto + ":" + segundo);
-		String hm = new String(tclin.nextLine());
+		String hm = new String(hora + ":" + minuto);
+		DateTimeFormatter formato = DateTimeFormatter.ofPattern("HH:mm");
 		
-		//System.out.print("Digite a horario do ambiente [hh:mm]: ");
-		horatmp = new String(hm);
+		horatmp = LocalTime.parse(hm, formato);
 		return horatmp;
 	}
 	

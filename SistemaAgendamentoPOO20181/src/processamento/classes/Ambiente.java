@@ -227,13 +227,14 @@ public class Ambiente {
 		System.out.print("Digite o nome do ambiente: ");
 		setNome(tclin.nextLine() );
 		
+		System.out.print("Digite o lugar do ambiente: ");
+		setLocalizacao(tclin.nextLine() );
+		
 		System.out.print("Digite o horario do ambiente: ");
 		horariotmp.criarHorarioAmbiente();
 		setHorario(horariotmp);
 		
-				
-		System.out.print("Digite o lugar do ambiente: ");
-		setLocalizacao(tclin.nextLine() );
+			
 		
 		System.out.print("Digite os componetes genericos do ambiente: ");
 		equipgentmp.criarEquipamentoGenerico();
@@ -243,7 +244,7 @@ public class Ambiente {
 		equipelettmp.criarEquipamentoEletronico();
 		setEquipelet(equipelettmp);
 		
-		System.out.print("Digite a matricula do professor solicitador do ambiente: ");
+		//System.out.print("Digite a matricula do professor solicitador do ambiente: ");
 		
 	}
 		

@@ -3,8 +3,7 @@ package processamento.colecoes;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.util.ArrayList;
-
+import java.util.HashMap;
 import java.io.File;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.StaxDriver;
@@ -13,7 +12,7 @@ import processamento.classes.*;
 
 public class ColecaoLaboratorio {
 	
-	private ArrayList<Laboratorio> colelaboratorio;
+	private HashMap<HorarioAmbiente,Laboratorio> colelaboratorio;
 	private File laboratorio_xml;
 
 	/**
@@ -24,8 +23,8 @@ public class ColecaoLaboratorio {
 	 */ 
 	public ColecaoLaboratorio() {
 		super();
-		this.colelaboratorio = new ArrayList<Laboratorio>();
-		this.laboratorio_xml = new File("Listagem-de-Laboratorios.xml");
+		this.colelaboratorio = new HashMap<HorarioAmbiente,Laboratorio>();
+		this.laboratorio_xml = new File("Lista-de-Laboratorios.xml");
 	}
 
 	@Override
@@ -58,20 +57,18 @@ public class ColecaoLaboratorio {
 	 * @return void
 	 * 
 	 */
-	public void adicionarLaboratorio(Laboratorio laboratoriotmp) throws Exception {
-		
+	public void adicionarLaboratorio() throws Exception {
+		Laboratorio laboratoriotmp = gerarLaboratorio();
 		HorarioAmbiente htmp = laboratoriotmp.getHorario();
 		
+		if(colelaboratorio.containsKey(htmp)) {
+			Exception e = new Exception("Ambiente ja existe!");
+			throw e;
+		}	else	{
+				colelaboratorio.put(htmp, laboratoriotmp);
+		}
 		
-		for(Laboratorio lab_tmp : colelaboratorio) {
-			if(!lab_tmp.getHorario().equals(htmp)) {
-				colelaboratorio.add(laboratoriotmp);				
-			}	else	{
-				Exception e = new Exception("Laboratorio ja existe!");
-				throw e;
-			}
 		
-		}		
 	}
 	
 	/**
@@ -86,18 +83,13 @@ public class ColecaoLaboratorio {
 	 * 
 	 */
 	public Laboratorio procurarlaboratorio(HorarioAmbiente horariotemporario) throws Exception {
-	
-		for(Laboratorio lab_tmp : colelaboratorio) {
-			
-			if(lab_tmp.getHorario().equals(horariotemporario)) {
-				return lab_tmp;				
-			}	else	{
+		
+		if(colelaboratorio.containsKey(horariotemporario)) {
+			return colelaboratorio.get(horariotemporario);
+		}	else	{
 				Exception e = new Exception("Ambiente nao existe!");
 				throw e;
-			}
-		
 		}
-		return null;
 	}
 	
 	
@@ -113,17 +105,13 @@ public class ColecaoLaboratorio {
 	 * 
 	 */
 	public void removerlaboratorio(HorarioAmbiente horariotemporario) throws Exception {
-				
-		for(Laboratorio lab_tmp : colelaboratorio) {
-			
-			if(lab_tmp.getHorario().equals(horariotemporario)) {
-				colelaboratorio.remove(lab_tmp);				
-			}	else	{
+		
+		if(colelaboratorio.containsKey(horariotemporario)) {
+			colelaboratorio.remove(horariotemporario);
+		}	else	{
 				Exception e = new Exception("Ambiente nao existe!");
 				throw e;
-			}
-		
-		}		
+		}
 	}
 
 	
@@ -178,7 +166,7 @@ public class ColecaoLaboratorio {
 
     		   ler_dados = new BufferedInputStream( new FileInputStream(this.laboratorio_xml) );
     	   
-    		   this.colelaboratorio = (ArrayList<Laboratorio>) recebe_xml.fromXML(ler_dados);
+    		   this.colelaboratorio = (HashMap<HorarioAmbiente, Laboratorio>) recebe_xml.fromXML(ler_dados);
     		    	   
     		   ler_dados.close();
            

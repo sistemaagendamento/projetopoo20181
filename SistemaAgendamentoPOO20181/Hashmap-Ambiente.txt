@@ -5,8 +5,7 @@ import processamento.classes.*;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.util.ArrayList;
-
+import java.util.HashMap;
 import java.io.File;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.StaxDriver;
@@ -19,13 +18,13 @@ import com.thoughtworks.xstream.io.xml.StaxDriver;
  */ 
 public class ColecaoAmbiente {
 	
-	private ArrayList<Ambiente> coleambiente;
+	private HashMap<HorarioAmbiente,Ambiente> coleambiente;
 	private File ambiente_xml;
 
 	public ColecaoAmbiente() {
 		super();
-		this.coleambiente = new ArrayList<Ambiente>();
-		this.ambiente_xml = new File("Listagem-de-Ambientes.xml");
+		this.coleambiente = new HashMap<HorarioAmbiente,Ambiente>();
+		this.ambiente_xml = new File("Listagem-de-ambientes.xml");
 	}
 
 	/**
@@ -58,16 +57,13 @@ public class ColecaoAmbiente {
 		
 		HorarioAmbiente htmp = ambitmp.getHorario();
 		
-		for(Ambiente amb_tmp : coleambiente) {
-			if(!amb_tmp.getHorario().equals(htmp)) {
-				coleambiente.add(ambitmp);				
-			}	else	{
-				Exception e = new Exception("Ambiente ja existe!");
-				throw e;
-			}
-		
+		if(coleambiente.containsKey(htmp)) {
+			Exception e = new Exception("Ambiente ja existe!");
+			throw e;
+		}	else	{
+				coleambiente.put(htmp, ambitmp);
 		}
-	
+		
 	}
 	
 	
@@ -84,18 +80,12 @@ public class ColecaoAmbiente {
 	 */
 	public Ambiente procurarAmbiente(HorarioAmbiente horariotemporario) throws Exception {
 		
-		for(Ambiente amb_tmp : coleambiente) {
-			
-			if(amb_tmp.getHorario().equals(horariotemporario)) {
-				return amb_tmp;				
-			}	else	{
+		if(coleambiente.containsKey(horariotemporario)) {
+			return coleambiente.get(horariotemporario);
+		}	else	{
 				Exception e = new Exception("Ambiente nao existe!");
 				throw e;
-			}
-		
 		}
-		return null;
-		
 	}
 	
 	/**
@@ -111,17 +101,12 @@ public class ColecaoAmbiente {
 	 */
 	public void removerAmbiente(HorarioAmbiente horariotemporario) throws Exception {
 		
-		
-		for(Ambiente amb_tmp : coleambiente) {
-			
-			if(amb_tmp.getHorario().equals(horariotemporario)) {
-				coleambiente.remove(amb_tmp);				
-			}	else	{
+		if(coleambiente.containsKey(horariotemporario)) {
+			coleambiente.remove(horariotemporario);
+		}	else	{
 				Exception e = new Exception("Ambiente nao existe!");
 				throw e;
-			}
-		
-		}		
+		}
 		
 	}
 	
@@ -142,7 +127,7 @@ public class ColecaoAmbiente {
 	       FileOutputStream salvar_dados;
 	       
 	       sai_xml.alias("Ambiente", Ambiente.class);
-	       sai_xml.alias("Listagem-de-Ambientes",ColecaoAmbiente.class);
+	       sai_xml.alias("Listagem de ambientes",ColecaoAmbiente.class);
 	       
 	       
 	       try {
@@ -177,7 +162,7 @@ public class ColecaoAmbiente {
 	           
 	    		   ler_dados = new BufferedInputStream( new FileInputStream(this.ambiente_xml) );
 	    	   
-	    		   this.coleambiente = (ArrayList<Ambiente>) recebe_xml.fromXML(ler_dados);
+	    		   this.coleambiente = (HashMap<HorarioAmbiente, Ambiente>) recebe_xml.fromXML(ler_dados);
 	    		   ler_dados.close();
 	           
 	       		} catch (Exception erro) {
