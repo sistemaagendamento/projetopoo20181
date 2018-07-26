@@ -54,7 +54,10 @@ public class Curso {
 		return horario;
 	}
 
-
+	/**
+	 * Metodo (setCodigo), é feito para adicionar informação ao artributo codigo, do tipo String e retorna void.
+	 * @param codigo String - Codigo (id) do curso
+	 */
 	private void setCodigo(String codigo) {
 		this.codigo = codigo;
 	}
@@ -64,7 +67,11 @@ public class Curso {
 		this.nome = nome;
 	}
 
-
+	/**
+	 * Metodo (setCoordenador), é feito para adicionar informação ao artributo coordenador, do tipo Professor e retorna void.
+ 	 * @param coordenador Professor - Indica o professor que é o coordenador do curso
+	 * @return void
+	 */
 	public void setCoordenador(Professor coordenador) {
 		this.coordenador = coordenador;
 	}

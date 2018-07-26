@@ -48,7 +48,11 @@ public class SetorLogico {
 		this.nome = nome;
 	}
 
-	
+	/**
+	 * Metodo (setCoordenador), é feito para adicionar informação ao artributo coordenador, do tipo Professor e retorna void.
+ 	 * @param coordenador Professor - Indica o professor que é o coordenador do setorlogico (unidade academica)
+	 * @return void
+	 */
 	public void setCoordenador(Professor coordenador) {
 		this.coordenador = coordenador;
 	}
