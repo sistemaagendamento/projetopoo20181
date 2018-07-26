@@ -25,7 +25,7 @@ public class Aplicacao {
 			e.printStackTrace();
 		}		
 		
-		salvarNosArquivosHash(   cole_curso, cole_professor, cole_set_logico);
+		salvarNosArquivosHash(cole_curso, cole_professor, cole_set_logico);
 		salvarNosArquivosArray(cole_ambiente,cole_laboratorio);
 		
 	}//fim do metodo main
@@ -322,13 +322,15 @@ public class Aplicacao {
 				System.out.println("====================================================");
 				System.out.println("Digite [1] para adicionar um novo ambiente: ");
 				System.out.println("====================================================");
-				System.out.println("Digite [2] para pesquisar um ambiente pelo horario: ");
+				System.out.println("Digite [2] para ver os ambientes cadastrados: ");
 				System.out.println("====================================================");
-				System.out.println("Digite [3] para remover um ambiente pelo horario: ");
+				System.out.println("Digite [3] para pesquisar um ambiente pelo horario: ");
 				System.out.println("====================================================");
-				System.out.println("Digite [4] para salvar os dados da ram no arquivo:");
+				System.out.println("Digite [4] para remover um ambiente pelo horario: ");
 				System.out.println("====================================================");
-				System.out.println("Digite [5] para ler os dados do arquivo:");
+				System.out.println("Digite [5] para salvar os dados da ram no arquivo:");
+				System.out.println("====================================================");
+				System.out.println("Digite [6] para ler os dados do arquivo:");
 				System.out.println("====================================================");
 				System.out.println("Digite [0] para voltar:");
 				System.out.println("====================================================");
@@ -344,24 +346,28 @@ public class Aplicacao {
 					ambitmp.setSolicitador(cole_professor.pesquisarProfessor(leString() ));
 					cole_ambiente.adicionarAmbiente(ambitmp);
 					break;
-				
+					
 				case 2:
+					cole_ambiente.verColecaoAmbiente();
+					break;
+				
+				case 3:
 					HorarioAmbiente horario_de_pesquisa = new HorarioAmbiente();
 					horario_de_pesquisa.criarHorarioAmbiente();
 					cole_ambiente.procurarAmbiente(horario_de_pesquisa);
 					break;
 				
-				case 3:
+				case 4:
 					HorarioAmbiente horario_pesquisa = new HorarioAmbiente();
 					horario_pesquisa.criarHorarioAmbiente();
 					cole_ambiente.removerAmbiente(horario_pesquisa);
 					break;
 					
-				case 4:
+				case 5:
 					cole_ambiente.salvarEmXml();
 					break;
 					
-				case 5:
+				case 6:
 					cole_ambiente.lerDoXml();
 					break;
 					
@@ -465,13 +471,15 @@ public class Aplicacao {
 				System.out.println("====================================================");
 				System.out.println("Digite [1] para adicionar um novo laboratorio: ");
 				System.out.println("====================================================");
-				System.out.println("Digite [2] para pesquisar um laboratorio pelo horario: ");
+				System.out.println("Digite [2] para ver os ambientes cadastrados: ");
 				System.out.println("====================================================");
-				System.out.println("Digite [3] para remover um laboratorio pelo horario: ");
+				System.out.println("Digite [3] para pesquisar um laboratorio pelo horario: ");
 				System.out.println("====================================================");
-				System.out.println("Digite [4] para salvar os dados da ram no arquivo:");
+				System.out.println("Digite [4] para remover um laboratorio pelo horario: ");
 				System.out.println("====================================================");
-				System.out.println("Digite [5] para ler os dados do arquivo:");
+				System.out.println("Digite [5] para salvar os dados da ram no arquivo:");
+				System.out.println("====================================================");
+				System.out.println("Digite [6] para ler os dados do arquivo:");
 				System.out.println("====================================================");
 				System.out.println("Digite [0] para voltar:");
 				System.out.println("====================================================");
@@ -490,22 +498,26 @@ public class Aplicacao {
 					break;
 				
 				case 2:
+					cole_laboratorio.verColecaoLaboratorio();
+					break;
+					
+				case 3:
 					HorarioAmbiente horario_de_pesquisa = new HorarioAmbiente();
 					horario_de_pesquisa.criarHorarioAmbiente();
 					cole_laboratorio.procurarlaboratorio(horario_de_pesquisa);
 					break;
 				
-				case 3:
+				case 4:
 					HorarioAmbiente horario_pesquisa = new HorarioAmbiente();
 					horario_pesquisa.criarHorarioAmbiente();
 					cole_laboratorio.removerlaboratorio(horario_pesquisa);
 					break;
 					
-				case 4:
+				case 5:
 					cole_laboratorio.salvarEmXml();
 					break;
 					
-				case 5:
+				case 6:
 					cole_laboratorio.lerDoXml();
 					break;
 					

@@ -6,10 +6,10 @@ import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
-
 import java.io.File;
 import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.io.xml.StaxDriver;
+import com.thoughtworks.xstream.io.xml.DomDriver;
+import com.thoughtworks.xstream.io.xml.Xpp3Driver;
 
 /**
  * @see processamento.classes.Ambiente
@@ -27,6 +27,19 @@ public class ColecaoAmbiente {
 		this.coleambiente = new ArrayList<Ambiente>();
 		this.ambiente_xml = new File("Listagem-de-Ambientes.xml");
 	}
+
+	
+	
+	/**
+	 * @return String de todos os elementos do ArrayList
+	 */
+	@Override
+	public String toString() {
+		return "ColecaoAmbiente [coleambiente=" + coleambiente + "]";
+	}
+
+
+
 
 	/**
 	 * @see processamento.classes.Ambiente
@@ -52,18 +65,19 @@ public class ColecaoAmbiente {
 	 * @return void
 	 * 
 	 */
-	public void adicionarAmbiente(Ambiente ambitmp) throws Exception {
+	public void adicionarAmbiente(Ambiente ambientetmp) throws Exception {
 		
 		//Ambiente ambitmp = gerarAmbiente();
 		
-		HorarioAmbiente htmp = ambitmp.getHorario();
 		
-		for(Ambiente amb_tmp : coleambiente) {
-			if(!amb_tmp.getHorario().equals(htmp)) {
-				coleambiente.add(ambitmp);				
-			}	else	{
-				Exception e = new Exception("Ambiente ja existe!");
+		for(Ambiente ambtmp : coleambiente) {
+			if(ambientetmp.getHorario().equals(ambtmp.getHorario())) {
+				Exception e = new Exception("Ambiente ja existe!");	
 				throw e;
+			}	else	{
+				
+				coleambiente.add(ambientetmp);
+				
 			}
 		
 		}
@@ -84,10 +98,10 @@ public class ColecaoAmbiente {
 	 */
 	public Ambiente procurarAmbiente(HorarioAmbiente horariotemporario) throws Exception {
 		
-		for(Ambiente amb_tmp : coleambiente) {
+		for(Ambiente ambtmp : coleambiente) {
 			
-			if(amb_tmp.getHorario().equals(horariotemporario)) {
-				return amb_tmp;				
+			if(ambtmp.getHorario().equals(horariotemporario)) {
+				return ambtmp;				
 			}	else	{
 				Exception e = new Exception("Ambiente nao existe!");
 				throw e;
@@ -112,10 +126,10 @@ public class ColecaoAmbiente {
 	public void removerAmbiente(HorarioAmbiente horariotemporario) throws Exception {
 		
 		
-		for(Ambiente amb_tmp : coleambiente) {
+		for(Ambiente ambtmp : coleambiente) {
 			
-			if(amb_tmp.getHorario().equals(horariotemporario)) {
-				coleambiente.remove(amb_tmp);				
+			if(ambtmp.getHorario().equals(horariotemporario)) {
+				coleambiente.remove(ambtmp);				
 			}	else	{
 				Exception e = new Exception("Ambiente nao existe!");
 				throw e;
@@ -124,6 +138,24 @@ public class ColecaoAmbiente {
 		}		
 		
 	}
+	
+	/**
+	 * @see processamento.classes.Ambiente
+	 * Este metodo publico (verColecaoAmbiente), é utilizado para ver a coleção Ambiente inteira
+	 * 
+
+	 * @return void
+	 * 
+	 */
+	public void verColecaoAmbiente() throws Exception {
+		
+		
+		for(Ambiente ambtmp : coleambiente) {
+			System.out.println(ambtmp);
+		}		
+		
+	}
+	
 	
 	
 	 /**
@@ -138,7 +170,7 @@ public class ColecaoAmbiente {
 		 */
 	   public void salvarEmXml() throws Exception {
 		   
-		   XStream sai_xml =  new XStream(new StaxDriver());
+		   XStream sai_xml =  new XStream(new DomDriver());
 	       FileOutputStream salvar_dados;
 	       
 	       sai_xml.alias("Ambiente", Ambiente.class);
@@ -149,6 +181,7 @@ public class ColecaoAmbiente {
 	           
 	    	   salvar_dados = new FileOutputStream(this.ambiente_xml);
 	    	   salvar_dados.write(sai_xml.toXML(this.coleambiente).getBytes());
+	    	   salvar_dados.flush();
 	    	   salvar_dados.close();
 	           
 	       } catch (Exception erro) {
@@ -165,7 +198,7 @@ public class ColecaoAmbiente {
 	  	 * 
 	  	 */
 	   public void lerDoXml() throws Exception {
-		   XStream recebe_xml =  new XStream(new StaxDriver());
+		   XStream recebe_xml =  new XStream(new DomDriver());
 	       BufferedInputStream ler_dados;
 	       
 	       recebe_xml.alias("Ambiente", Ambiente.class);
@@ -178,6 +211,7 @@ public class ColecaoAmbiente {
 	    		   ler_dados = new BufferedInputStream( new FileInputStream(this.ambiente_xml) );
 	    	   
 	    		   this.coleambiente = (ArrayList<Ambiente>) recebe_xml.fromXML(ler_dados);
+	    		   
 	    		   ler_dados.close();
 	           
 	       		} catch (Exception erro) {

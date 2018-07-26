@@ -166,7 +166,6 @@ public class Ambiente {
 		return result;
 	}
 
-	//equals
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -208,6 +207,7 @@ public class Ambiente {
 			return false;
 		return true;
 	}
+		
 	
 	
 	//metodos
@@ -247,7 +247,8 @@ public class Ambiente {
 		//System.out.print("Digite a matricula do professor solicitador do ambiente: ");
 		
 	}
-		
+
+	
 	
 	
 }//fim da classe Aplicativo

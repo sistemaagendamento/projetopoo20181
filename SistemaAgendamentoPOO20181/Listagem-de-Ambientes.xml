@@ -1,1 +1,29 @@
-<?xml version="1.0" ?><list></list>
+<list>
+  <Ambiente>
+    <nome>1</nome>
+    <horario>
+      <diasemana>1</diasemana>
+      <horainicio>1</horainicio>
+      <horatermino>1</horatermino>
+    </horario>
+    <solicitador>
+      <nome>Fulano</nome>
+      <matricula>20181</matricula>
+      <cpf>11111111111</cpf>
+      <formacao>Bacharelado</formacao>
+    </solicitador>
+    <localizacao>1</localizacao>
+    <equipgen>
+      <mesas>1</mesas>
+      <cadeiras>1</cadeiras>
+      <lixeiras>1</lixeiras>
+      <quadros>1</quadros>
+    </equipgen>
+    <equipelet>
+      <computadores>1</computadores>
+      <arcondicionado>1</arcondicionado>
+      <projetores>1</projetores>
+      <sistemadesom>1</sistemadesom>
+    </equipelet>
+  </Ambiente>
+</list>

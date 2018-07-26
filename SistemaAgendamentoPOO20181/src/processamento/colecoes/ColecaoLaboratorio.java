@@ -7,7 +7,9 @@ import java.util.ArrayList;
 
 import java.io.File;
 import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.DomDriver;
 import com.thoughtworks.xstream.io.xml.StaxDriver;
+import com.thoughtworks.xstream.io.xml.Xpp3Driver;
 
 import processamento.classes.*;
 
@@ -28,10 +30,16 @@ public class ColecaoLaboratorio {
 		this.laboratorio_xml = new File("Listagem-de-Laboratorios.xml");
 	}
 
+	
+	/**
+	 * @return String de todos os elementos do ArrayList
+	 */
 	@Override
 	public String toString() {
 		return "ColecaoLaboratorio [colelaboratorio=" + colelaboratorio + "]";
 	}
+
+
 
 	/**
 	 * @see processamento.classes.Laboratorio
@@ -59,16 +67,14 @@ public class ColecaoLaboratorio {
 	 * 
 	 */
 	public void adicionarLaboratorio(Laboratorio laboratoriotmp) throws Exception {
-		
-		HorarioAmbiente htmp = laboratoriotmp.getHorario();
-		
-		
-		for(Laboratorio lab_tmp : colelaboratorio) {
-			if(!lab_tmp.getHorario().equals(htmp)) {
-				colelaboratorio.add(laboratoriotmp);				
-			}	else	{
+	
+		for(Laboratorio labtmp : colelaboratorio) {
+			if(laboratoriotmp.getHorario().equals(labtmp.getHorario())) {
 				Exception e = new Exception("Laboratorio ja existe!");
-				throw e;
+				throw e;				
+			}	else	{
+				
+				colelaboratorio.add(laboratoriotmp);
 			}
 		
 		}		
@@ -87,10 +93,10 @@ public class ColecaoLaboratorio {
 	 */
 	public Laboratorio procurarlaboratorio(HorarioAmbiente horariotemporario) throws Exception {
 	
-		for(Laboratorio lab_tmp : colelaboratorio) {
+		for(Laboratorio labtmp : colelaboratorio) {
 			
-			if(lab_tmp.getHorario().equals(horariotemporario)) {
-				return lab_tmp;				
+			if(labtmp.getHorario().equals(horariotemporario)) {
+				return labtmp;				
 			}	else	{
 				Exception e = new Exception("Ambiente nao existe!");
 				throw e;
@@ -114,10 +120,10 @@ public class ColecaoLaboratorio {
 	 */
 	public void removerlaboratorio(HorarioAmbiente horariotemporario) throws Exception {
 				
-		for(Laboratorio lab_tmp : colelaboratorio) {
+		for(Laboratorio labtmp : colelaboratorio) {
 			
-			if(lab_tmp.getHorario().equals(horariotemporario)) {
-				colelaboratorio.remove(lab_tmp);				
+			if(labtmp.getHorario().equals(horariotemporario)) {
+				colelaboratorio.remove(labtmp);				
 			}	else	{
 				Exception e = new Exception("Ambiente nao existe!");
 				throw e;
@@ -126,6 +132,24 @@ public class ColecaoLaboratorio {
 		}		
 	}
 
+	
+	/**
+	 * @see processamento.classes.Ambiente
+	 * Este metodo publico (verColecaoAmbiente), é utilizado para ver a coleção Ambiente inteira
+	 * 
+
+	 * @return void
+	 * 
+	 */
+	public void verColecaoLaboratorio() throws Exception {
+		
+		
+		for(Laboratorio labtmp : colelaboratorio) {
+			System.out.println(labtmp);
+		}		
+		
+	}
+	
 	
 	 /**
 	 * @see processamento.classes.Laboratorio
@@ -139,7 +163,7 @@ public class ColecaoLaboratorio {
 	 */
    public void salvarEmXml() throws Exception {
 	   
-	   XStream sai_xml =  new XStream(new StaxDriver());
+	   XStream sai_xml =  new XStream(new DomDriver() );
        FileOutputStream salvar_dados;
        
        sai_xml.alias("Laboratorio", Laboratorio.class);
@@ -166,7 +190,7 @@ public class ColecaoLaboratorio {
   	 * 
   	 */
    public void lerDoXml() throws Exception {
-	   XStream recebe_xml =  new XStream(new StaxDriver());
+	   XStream recebe_xml =  new XStream(new DomDriver() );
        BufferedInputStream ler_dados;
        
        recebe_xml.alias("Laboratorio", Laboratorio.class);
